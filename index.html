@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nithin Sai Kumar Kopparapu — AI & Deep Learning Engineer</title>
+    <meta name="description"
+        content="Portfolio of Nithin Sai Kumar Kopparapu — AI Researcher and Deep Learning Engineer. M2 in Machine Vision & AI at Université Paris-Saclay. Specializing in VLMs, computer vision, and intelligent systems.">
+    <meta name="author" content="Nithin Sai Kumar Kopparapu">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A0</text></svg>">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.173.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.173.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="hidden-banana" id="easter-egg-banana" title="&#127820;"
+        style="top:30%;left:10%;animation:banana-float 60s linear infinite;">&#127820;</div>
+
+    <!-- Neural Network Navigation -->
+    <nav class="nav-neural" id="nav-neural" aria-label="Section navigation">
+        <svg class="nav-neural__svg" viewBox="0 0 50 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Connections between nodes (curvy synapses) -->
+            <path class="nav-neural__connection" id="conn-0-1" d="M25 32 C40 60, 10 85, 25 112"/>
+            <path class="nav-neural__connection" id="conn-1-2" d="M25 112 C10 140, 40 165, 25 192"/>
+            <path class="nav-neural__connection" id="conn-2-3" d="M25 192 C40 220, 10 245, 25 252"/>
+            <path class="nav-neural__connection" id="conn-3-4" d="M25 252 C10 270, 40 285, 25 292"/>
+            <!-- Side dendrites for depth -->
+            <line class="nav-neural__connection" x1="25" y1="32" x2="8" y2="72" opacity="0.3"/>
+            <line class="nav-neural__connection" x1="25" y1="112" x2="42" y2="152" opacity="0.3"/>
+            <line class="nav-neural__connection" x1="25" y1="192" x2="8" y2="222" opacity="0.3"/>
+            <line class="nav-neural__connection" x1="25" y1="252" x2="42" y2="272" opacity="0.3"/>
+            <!-- Small dendrite nodes -->
+            <circle cx="8" cy="72" r="2" fill="var(--border-light)" opacity="0.4"/>
+            <circle cx="42" cy="152" r="2" fill="var(--border-light)" opacity="0.4"/>
+            <circle cx="8" cy="222" r="2" fill="var(--border-light)" opacity="0.4"/>
+            <circle cx="42" cy="272" r="2" fill="var(--border-light)" opacity="0.4"/>
+
+            <!-- Node groups (clickable) -->
+            <g class="nav-neural__group active-group" data-section="hero">
+                <g class="nav-neural__node active" data-section="hero" role="button" aria-label="Home">
+                    <circle class="node-pulse" cx="25" cy="32" r="12"/>
+                    <circle class="node-core" cx="25" cy="32" r="5.5"/>
+                </g>
+                <text class="nav-neural__label" x="-2" y="35">Home</text>
+            </g>
+
+            <g class="nav-neural__group" data-section="portfolio">
+                <g class="nav-neural__node" data-section="portfolio" role="button" aria-label="Projects">
+                    <circle class="node-pulse" cx="25" cy="112" r="12"/>
+                    <circle class="node-core" cx="25" cy="112" r="5.5"/>
+                </g>
+                <text class="nav-neural__label" x="-2" y="115">Projects</text>
+            </g>
+
+            <g class="nav-neural__group" data-section="experience">
+                <g class="nav-neural__node" data-section="experience" role="button" aria-label="Experience">
+                    <circle class="node-pulse" cx="25" cy="192" r="12"/>
+                    <circle class="node-core" cx="25" cy="192" r="5.5"/>
+                </g>
+                <text class="nav-neural__label" x="-2" y="195">Experience</text>
+            </g>
+
+            <g class="nav-neural__group" data-section="console">
+                <g class="nav-neural__node" data-section="console" role="button" aria-label="Skills">
+                    <circle class="node-pulse" cx="25" cy="252" r="12"/>
+                    <circle class="node-core" cx="25" cy="252" r="5.5"/>
+                </g>
+                <text class="nav-neural__label" x="-2" y="255">Skills</text>
+            </g>
+
+            <g class="nav-neural__group" data-section="contact">
+                <g class="nav-neural__node" data-section="contact" role="button" aria-label="Contact">
+                    <circle class="node-pulse" cx="25" cy="292" r="12"/>
+                    <circle class="node-core" cx="25" cy="292" r="5.5"/>
+                </g>
+                <text class="nav-neural__label" x="-2" y="295">Contact</text>
+            </g>
+        </svg>
+    </nav>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Counterfactual mode activated — the banana was never there.</div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-panel">
+            <button class="modal-close" id="modal-close">✕</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <div id="app">
+
+        <!-- ===================== HERO ===================== -->
+        <section id="hero" class="section">
+            <div class="hero__content">
+                <div class="hero__status hero-enter hero-enter--1">
+                    <span class="tag tag--accent">
+                        <span class="status-dot"></span>
+                        &nbsp; Machine Vision &amp; AI &mdash; Universit&eacute; Paris-Saclay
+                    </span>
+                </div>
+                <h1 class="hero__headline hero-enter hero-enter--2">
+                    <span class="gradient-text">Building Intelligent</span><br>
+                    Systems That See
+                </h1>
+                <p class="hero__sub hero-enter hero-enter--3">
+                    Nithin Sai Kumar Kopparapu &mdash; AI Researcher &amp; Deep Learning Engineer<br>
+                    From vision-language models to edge deployment &mdash; turning research into real-world AI
+                </p>
+                <div class="hero__cta-group hero-enter hero-enter--4">
+                    <a href="#portfolio" class="btn btn--primary" id="cta-projects">
+                        Explore Projects
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn--outline" id="cta-contact">Get in Touch</a>
+                </div>
+                <div class="hero__scroll-hint hero-enter hero-enter--5">
+                    <span>scroll</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PORTFOLIO ===================== -->
+        <section id="portfolio" class="section">
+            <div class="section__inner">
+                <span class="section__label reveal">// Projects & Research</span>
+                <h2 class="section__title reveal reveal-delay-1">AI & <span class="gradient-text">Deep Learning</span> Portfolio</h2>
+                <p class="section__desc reveal reveal-delay-2">Research, deployments, and experiments across the full AI stack.</p>
+
+                <!-- CATEGORY 1: Vision & Language (LEFT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header">
+                        <span class="portfolio__category-number">01</span>
+                        <span class="portfolio__category-title">Vision & Language Models</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
+                        <!-- Compact-VLM (Featured) -->
+                        <div class="project-card project-card--featured" data-project="compact-vlm" id="project-vlm">
+                            <div class="project-card__featured-badge"><span class="tag tag--accent">★ Featured Research</span></div>
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#1a0a1a,#0f0a1a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="80" y="60" fill="#a855f7" font-size="9" font-family="monospace" opacity="0.7">SmolVLM-256M</text>
+                                    <text x="80" y="80" fill="#ef4444" font-size="7" font-family="monospace" opacity="0.5">"The sticker is Chiquita..."</text>
+                                    <line x1="200" y1="10" x2="200" y2="190" stroke="#a855f7" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+                                    <text x="220" y="60" fill="#22c55e" font-size="9" font-family="monospace" opacity="0.7">QLoRA Fine-Tuned</text>
+                                    <text x="220" y="80" fill="#22c55e" font-size="7" font-family="monospace" opacity="0.5">"I do not see a sticker."</text>
+                                    <text x="140" y="130" fill="#f5d547" font-size="28" opacity="0.3">&#127820;</text>
+                                    <text x="120" y="175" fill="#f5d547" font-size="7" font-family="monospace" opacity="0.4">93.75% → 21.88% hallucination</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">01 — VLM RESEARCH</div>
+                                <h3 class="project-card__title">Mitigating Hallucination in Compact Vision-Language Models</h3>
+                                <p class="project-card__desc">Chain-of-Thought prompting and QLoRA fine-tuning to combat sycophancy in small VLMs. 78% safety improvement.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">SmolVLM2</span>
+                                    <span class="tag tag--accent">QLoRA</span>
+                                    <span class="tag tag--cyan">PyTorch</span>
+                                    <span class="tag">PEFT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Continual Learning -->
+                        <div class="project-card" data-project="continual-learning" id="project-cl">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0a1a,#1a0a2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="50" y="50" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.5">Task 1</text>
+                                    <text x="165" y="50" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.5">Task 2</text>
+                                    <text x="280" y="50" fill="#a855f7" font-size="8" font-family="monospace" opacity="0.5">Task N</text>
+                                    <rect x="50" y="60" width="80" height="50" rx="4" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <rect x="160" y="60" width="80" height="50" rx="4" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.4"/>
+                                    <rect x="270" y="60" width="80" height="50" rx="4" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.4"/>
+                                    <path d="M130 85 L160 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+                                    <path d="M240 85 L270 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+                                    <text x="100" y="150" fill="#ef4444" font-size="7" font-family="monospace" opacity="0.4">catastrophic forgetting?</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">02 — CONTINUAL LEARNING</div>
+                                <h3 class="project-card__title">Multitask Image Classification</h3>
+                                <p class="project-card__desc">Sequential multi-task learning without catastrophic forgetting of previously learned knowledge.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Continual Learning</span>
+                                    <span class="tag tag--cyan">CNNs</span>
+                                    <span class="tag">PyTorch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 2: Computer Vision & Edge (RIGHT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header portfolio__category-header--right">
+                        <span class="portfolio__category-number">02</span>
+                        <span class="portfolio__category-title">Computer Vision & Edge AI</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
+                        <!-- UAV -->
+                        <div class="project-card" data-project="uav-detection" id="project-uav">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0f1a,#0f1a2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="200" y1="0" x2="200" y2="200" stroke="#1a2a4a" stroke-width="1"/>
+                                    <line x1="0" y1="100" x2="400" y2="100" stroke="#1a2a4a" stroke-width="1"/>
+                                    <rect x="160" y="40" width="30" height="20" rx="2" fill="none" stroke="#f5d547" stroke-width="1.5" opacity="0.8"/>
+                                    <rect x="220" y="120" width="35" height="22" rx="2" fill="none" stroke="#22d3ee" stroke-width="1.5" opacity="0.8"/>
+                                    <rect x="100" y="85" width="28" height="18" rx="2" fill="none" stroke="#f5d547" stroke-width="1.5" opacity="0.6"/>
+                                    <text x="162" y="37" fill="#f5d547" font-size="6" font-family="monospace" opacity="0.9">car 0.94</text>
+                                    <text x="222" y="117" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.9">truck 0.87</text>
+                                    <circle cx="200" cy="100" r="3" fill="#f5d547" opacity="0.4"/>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">03 — AERIAL DETECTION</div>
+                                <h3 class="project-card__title">Vehicle Detection & Speed Estimation for UAV</h3>
+                                <p class="project-card__desc">UAV-based signaling system for road efficiency and collision prevention at intersections.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">YOLOv11</span>
+                                    <span class="tag tag--cyan">Transfer Learning</span>
+                                    <span class="tag">OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Edge AI -->
+                        <div class="project-card" data-project="edge-ai" id="project-edge">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0f0a1a,#1a0f2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="150" y="70" width="100" height="60" rx="5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.4"/>
+                                    <text x="170" y="95" fill="#a855f7" font-size="7" font-family="monospace" opacity="0.6">JETSON</text>
+                                    <text x="170" y="110" fill="#a855f7" font-size="5" font-family="monospace" opacity="0.4">NANO/XAVIER</text>
+                                    <line x1="50" y1="100" x2="145" y2="100" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4 2" opacity="0.5"/>
+                                    <line x1="255" y1="100" x2="370" y2="100" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4 2" opacity="0.5"/>
+                                    <circle cx="35" cy="100" r="12" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+                                    <rect x="310" y="75" width="60" height="15" rx="2" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.4"/>
+                                    <text x="315" y="85" fill="#f5d547" font-size="5" font-family="monospace" opacity="0.6">FPS: 30</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">04 — EDGE DEPLOYMENT</div>
+                                <h3 class="project-card__title">Traffic Analysis via Edge AI Modules</h3>
+                                <p class="project-card__desc">Real-time detection and counting on NVIDIA Jetson Nano & Xavier using optimized YOLOv4.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">YOLOv4</span>
+                                    <span class="tag tag--cyan">Jetson Nano</span>
+                                    <span class="tag">TensorRT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Image Processing -->
+                        <div class="project-card" data-project="image-processing" id="project-imgproc">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0f1a,#0a1a2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="80" y="50" width="100" height="70" rx="4" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <text x="100" y="90" fill="#22d3ee" font-size="7" font-family="monospace" opacity="0.5">Input</text>
+                                    <path d="M185 85 L215 85" stroke="#f5d547" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+                                    <rect x="220" y="50" width="100" height="70" rx="4" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.4"/>
+                                    <text x="235" y="90" fill="#f5d547" font-size="7" font-family="monospace" opacity="0.5">Processed</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">05 — IMAGE PROCESSING</div>
+                                <h3 class="project-card__title">Image Processing Experiments</h3>
+                                <p class="project-card__desc">Classical CV algorithms, filters, and transformations in Jupyter Notebooks.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">OpenCV</span>
+                                    <span class="tag tag--cyan">Jupyter</span>
+                                    <span class="tag">Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 3: Generative AI & NLP (LEFT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header">
+                        <span class="portfolio__category-number">03</span>
+                        <span class="portfolio__category-title">Generative AI & NLP</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
+                        <!-- GAN -->
+                        <div class="project-card" data-project="gan" id="project-gan">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#1a0f0a,#2e1a0f);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="40" y="70" width="80" height="60" rx="5" fill="none" stroke="#f5d547" stroke-width="1" opacity="0.5"/>
+                                    <text x="55" y="95" fill="#f5d547" font-size="7" font-family="monospace" opacity="0.7">Generator</text>
+                                    <rect x="280" y="70" width="80" height="60" rx="5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.5"/>
+                                    <text x="282" y="95" fill="#a855f7" font-size="6" font-family="monospace" opacity="0.7">Discriminator</text>
+                                    <line x1="125" y1="95" x2="275" y2="95" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4 2" opacity="0.4"/>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">06 — GENERATIVE AI</div>
+                                <h3 class="project-card__title">Synthetic Data Generation — VAE vs GAN</h3>
+                                <p class="project-card__desc">Comparative study of VAE and GAN architectures for synthetic training data augmentation.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">GANs</span>
+                                    <span class="tag tag--cyan">VAE</span>
+                                    <span class="tag">PyTorch</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arithmetic LLM -->
+                        <div class="project-card" data-project="arithmetic-llm" id="project-llm">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a0f,#0f2e1a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="100" y="55" fill="#22d3ee" font-size="10" font-family="monospace" opacity="0.6">Supervised</text>
+                                    <text x="240" y="55" fill="#f5d547" font-size="10" font-family="monospace" opacity="0.6">RL</text>
+                                    <text x="130" y="100" fill="#8a8a9a" font-size="14" font-family="monospace" opacity="0.4">27 + 145 = ?</text>
+                                    <text x="155" y="130" fill="#22c55e" font-size="10" font-family="monospace" opacity="0.5">→ 172 ✓</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">07 — NLP / LLM</div>
+                                <h3 class="project-card__title">Arithmetic LLM — Pretraining vs RL</h3>
+                                <p class="project-card__desc">Can small LMs learn arithmetic? Comparing supervised pretraining and RL fine-tuning paradigms.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Transformers</span>
+                                    <span class="tag tag--cyan">RL</span>
+                                    <span class="tag">NLP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 4: Reinforcement Learning & XR (RIGHT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header portfolio__category-header--right">
+                        <span class="portfolio__category-number">04</span>
+                        <span class="portfolio__category-title">Reinforcement Learning & XR</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
+                        <!-- DQN -->
+                        <div class="project-card" data-project="dqn-cartpole" id="project-dqn">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a1a,#0f2e2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="100" y1="140" x2="300" y2="140" stroke="#22d3ee" stroke-width="1" opacity="0.4"/>
+                                    <rect x="185" y="125" width="30" height="15" rx="2" fill="none" stroke="#f5d547" stroke-width="1" opacity="0.6"/>
+                                    <line x1="200" y1="125" x2="210" y2="60" stroke="#22c55e" stroke-width="1.5" opacity="0.7"/>
+                                    <circle cx="210" cy="55" r="4" fill="#22c55e" opacity="0.5"/>
+                                    <text x="140" y="175" fill="#8a8a9a" font-size="7" font-family="monospace" opacity="0.4">reward: +1 per step</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">08 — REINFORCEMENT LEARNING</div>
+                                <h3 class="project-card__title">Deep Q-Learning — CartPole-v1</h3>
+                                <p class="project-card__desc">DQN with experience replay and target networks solving the CartPole benchmark.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">DQN</span>
+                                    <span class="tag tag--cyan">OpenAI Gym</span>
+                                    <span class="tag">PyTorch</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hanoi XR -->
+                        <div class="project-card" data-project="hanoi-xr" id="project-xr">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#1a100a,#2e1a0a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="100" y1="160" x2="300" y2="160" stroke="#f5d547" stroke-width="1" opacity="0.3"/>
+                                    <line x1="140" y1="80" x2="140" y2="160" stroke="#8a8a9a" stroke-width="0.8" opacity="0.3"/>
+                                    <line x1="200" y1="80" x2="200" y2="160" stroke="#8a8a9a" stroke-width="0.8" opacity="0.3"/>
+                                    <line x1="260" y1="80" x2="260" y2="160" stroke="#8a8a9a" stroke-width="0.8" opacity="0.3"/>
+                                    <rect x="115" y="140" width="50" height="12" rx="3" fill="#a855f7" opacity="0.4"/>
+                                    <rect x="120" y="126" width="40" height="12" rx="3" fill="#22d3ee" opacity="0.4"/>
+                                    <rect x="125" y="112" width="30" height="12" rx="3" fill="#f5d547" opacity="0.4"/>
+                                    <text x="150" y="55" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.5">WebXR</text>
+                                    <text x="220" y="55" fill="#a855f7" font-size="8" font-family="monospace" opacity="0.5">VR / AR</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">09 — EXTENDED REALITY</div>
+                                <h3 class="project-card__title">Tower of Hanoi — XR Game</h3>
+                                <p class="project-card__desc">Immersive puzzle game with WebXR VR/AR support, 3D manipulation, and hint system.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Three.js</span>
+                                    <span class="tag tag--cyan">WebXR</span>
+                                    <span class="tag">VR / AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 5: Embedded & IoT (LEFT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header">
+                        <span class="portfolio__category-number">05</span>
+                        <span class="portfolio__category-title">Embedded Systems & IoT</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
+                        <!-- Embedded -->
+                        <div class="project-card" data-project="embedded-systems" id="project-embed">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0f1a0a,#1a2e0f);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="130" y="55" width="140" height="90" rx="6" fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0.4"/>
+                                    <rect x="160" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
+                                    <rect x="185" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
+                                    <rect x="210" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
+                                    <rect x="235" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
+                                    <text x="160" y="120" fill="#22c55e" font-size="8" font-family="monospace" opacity="0.5">MCU</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">10 — EMBEDDED SYSTEMS</div>
+                                <h3 class="project-card__title">Embedded Systems Projects</h3>
+                                <p class="project-card__desc">Microcontroller programming, sensor integration, and real-time control in C.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">C</span>
+                                    <span class="tag tag--cyan">Microcontrollers</span>
+                                    <span class="tag">IoT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arduino -->
+                        <div class="project-card" data-project="arduino" id="project-arduino">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a1a,#0a2e1a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="200" cy="100" r="40" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.3"/>
+                                    <text x="175" y="105" fill="#22d3ee" font-size="10" font-family="monospace" opacity="0.5">∞</text>
+                                    <text x="140" y="160" fill="#8a8a9a" font-size="7" font-family="monospace" opacity="0.3">Arduino • C++ • Sensors</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">11 — IoT & HARDWARE</div>
+                                <h3 class="project-card__title">Arduino Projects</h3>
+                                <p class="project-card__desc">Hardware prototyping with sensor integration and IoT experiments.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Arduino</span>
+                                    <span class="tag tag--cyan">C++</span>
+                                    <span class="tag">Sensors</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===================== EXPERIENCE ===================== -->
+        <section id="experience" class="section">
+            <div class="section__inner">
+                <span class="section__label reveal">// Career &amp; Publications</span>
+                <h2 class="section__title reveal reveal-delay-1">Experience &amp; <span class="gradient-text">Research</span></h2>
+
+                <div class="experience__grid">
+                    <div class="reveal reveal-delay-2">
+                        <h3 style="font-size:0.85rem;color:var(--accent-cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:2rem;">Professional Timeline</h3>
+                        <div class="timeline">
+                            <div class="timeline__item timeline__item--current">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">MAR 2026 &mdash; PRESENT</div>
+                                <div class="timeline__role">Computer Vision &amp; AI Intern</div>
+                                <div class="timeline__company">Saint-Gobain Research Provence, France</div>
+                                <p class="timeline__desc">Image processing &amp; CV algorithms for monitoring clogging in glass furnaces. Image segmentation using classical and ML-based approaches.</p>
+                            </div>
+                            <div class="timeline__item">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">JUL 2023 &mdash; AUG 2024</div>
+                                <div class="timeline__role">Graduate Engineer</div>
+                                <div class="timeline__company">Mavenir Systems, Bengaluru, India</div>
+                                <p class="timeline__desc">5G RAN deployment, Kubernetes cluster installation (RHOCP), O-RAN deployment and sanity testing.</p>
+                            </div>
+                            <div class="timeline__item">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">JAN 2023 &mdash; JUN 2023</div>
+                                <div class="timeline__role">Intern &mdash; 5G Systems</div>
+                                <div class="timeline__company">Mavenir Systems, Bengaluru, India</div>
+                                <p class="timeline__desc">5G RAN platform deployment, cluster installation, GNB testing.</p>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size:0.85rem;color:var(--accent-cyan);letter-spacing:0.15em;text-transform:uppercase;margin:3rem 0 1.5rem;">Education</h3>
+                        <div class="timeline">
+                            <div class="timeline__item timeline__item--current">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">SEP 2025 &mdash; PRESENT</div>
+                                <div class="timeline__role">M2 &mdash; Machine Vision &amp; AI</div>
+                                <div class="timeline__company">Universit&eacute; Paris-Saclay, France</div>
+                            </div>
+                            <div class="timeline__item">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">SEP 2024 &mdash; JUN 2025</div>
+                                <div class="timeline__role">M1 &mdash; Electrical Engineering</div>
+                                <div class="timeline__company">Universit&eacute; Paris-Saclay, France</div>
+                            </div>
+                            <div class="timeline__item">
+                                <div class="timeline__dot"></div>
+                                <div class="timeline__date">JUL 2019 &mdash; JUL 2023</div>
+                                <div class="timeline__role">B.Tech &mdash; Electronics &amp; Communication</div>
+                                <div class="timeline__company">Amrita Vishwa Vidyapeetham, Chennai, India</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal reveal-delay-3">
+                        <h3 style="font-size:0.85rem;color:var(--accent-cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:2rem;">Publications</h3>
+                        <div class="publications">
+                            <div class="pub-card">
+                                <div class="pub-card__icon">&#128196;</div>
+                                <div class="pub-card__title">Measuring the Vehicle-in-Motion, Density and Allocation of Traffic Signal Using Transfer Learning</div>
+                                <div class="pub-card__venue">3rd Intl. Conf. on AI and Knowledge Processing, Oct 2023 &mdash; Springer</div>
+                                <a href="https://doi.org/10.1007/978-3-031-68617-7_19" target="_blank" rel="noopener" class="pub-card__doi">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                    DOI: 10.1007/978-3-031-68617-7_19
+                                </a>
+                            </div>
+                            <div class="pub-card">
+                                <div class="pub-card__icon">&#128196;</div>
+                                <div class="pub-card__title">Detecting and Classifying the Vehicles in Traffic Signal Using Transfer Learning</div>
+                                <div class="pub-card__venue">2nd Intl. Conf. on Signal &amp; Data Processing (ICSDP 2022) &mdash; Springer</div>
+                                <a href="https://doi.org/10.1007/978-981-99-1410-4_36" target="_blank" rel="noopener" class="pub-card__doi">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                    DOI: 10.1007/978-981-99-1410-4_36
+                                </a>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size:0.85rem;color:var(--accent-cyan);letter-spacing:0.15em;text-transform:uppercase;margin:3rem 0 1.5rem;">Achievements</h3>
+                        <div class="publications">
+                            <div class="pub-card"><div class="pub-card__icon">&#127942;</div><div class="pub-card__title">Winner &mdash; Arcanum Image Processing Competition</div><div class="pub-card__venue">NIT Durgapur, March 2022</div></div>
+                            <div class="pub-card"><div class="pub-card__icon">&#129352;</div><div class="pub-card__title">Semi-finalist &mdash; The Inventors Challenge</div><div class="pub-card__venue">STMicroelectronics &amp; ARM, November 2022</div></div>
+                            <div class="pub-card"><div class="pub-card__icon">&#129302;</div><div class="pub-card__title">MCP Hackathon &mdash; Mistral AI</div><div class="pub-card__venue">Designed Facebook integration with Le-chat</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONSOLE ===================== -->
+        <section id="console" class="section">
+            <div class="section__inner">
+                <span class="section__label reveal">// Tech Stack</span>
+                <h2 class="section__title reveal reveal-delay-1">The <span class="gradient-text">Console</span></h2>
+                <p class="section__desc reveal reveal-delay-2">What I work with, day in and day out.</p>
+                <div class="terminal reveal reveal-delay-3" id="skills-terminal">
+                    <div class="terminal__titlebar">
+                        <div class="terminal__dot terminal__dot--red"></div>
+                        <div class="terminal__dot terminal__dot--yellow"></div>
+                        <div class="terminal__dot terminal__dot--green"></div>
+                        <span class="terminal__title">nithin@ai-world &mdash; skills.yaml</span>
+                    </div>
+                    <div class="terminal__body" id="terminal-output">
+                        <span class="terminal__cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section id="contact" class="section">
+            <div class="section__inner">
+                <span class="section__label reveal">// Get in Touch</span>
+                <h2 class="section__title reveal reveal-delay-1">Let's <span class="gradient-text">Connect</span></h2>
+                <p class="section__desc reveal reveal-delay-2">Open to opportunities in AI, Deep Learning, and Computer Vision research across Europe.</p>
+                <div class="terminal contact__terminal reveal reveal-delay-3">
+                    <div class="terminal__titlebar">
+                        <div class="terminal__dot terminal__dot--red"></div>
+                        <div class="terminal__dot terminal__dot--yellow"></div>
+                        <div class="terminal__dot terminal__dot--green"></div>
+                        <span class="terminal__title">visitor@nithin.dev &mdash; bash</span>
+                    </div>
+                    <div class="terminal__body">
+                        <div><span class="terminal__prompt">visitor@nithin.dev:~$</span><span class="terminal__command"> cat about.json</span></div>
+                        <div class="terminal__output" style="margin-top:1rem;">
+                            <span class="terminal__bracket">{</span><br>
+                            &nbsp;&nbsp;<span class="terminal__key">"name"</span>: <span class="terminal__value">"Nithin Sai Kumar Kopparapu"</span>,<br>
+                            &nbsp;&nbsp;<span class="terminal__key">"role"</span>: <span class="terminal__value">"AI Researcher &amp; Deep Learning Engineer"</span>,<br>
+                            &nbsp;&nbsp;<span class="terminal__key">"location"</span>: <span class="terminal__value">"France &#127467;&#127479;"</span>,<br>
+                            &nbsp;&nbsp;<span class="terminal__key">"education"</span>: <span class="terminal__value">"M2 Machine Vision &amp; AI &mdash; Paris-Saclay"</span>,<br>
+                            &nbsp;&nbsp;<span class="terminal__key">"status"</span>: <span class="terminal__value">"Open to opportunities"</span><br>
+                            <span class="terminal__bracket">}</span>
+                        </div>
+                        <div style="margin-top:1.5rem;"><span class="terminal__prompt">visitor@nithin.dev:~$</span><span class="terminal__command"> fetch_resume --format=pdf</span></div>
+                        <div class="terminal__output" style="margin-top:0.5rem;">
+                            <span style="color:#22c55e;">&rarr;</span> <a href="https://raw.githubusercontent.com/NANInithin/NaniNithin_Portfolio/main/Assets/Nithin_resume.pdf" download="Nithin_Kopparapu_Resume.pdf" style="color:var(--accent-cyan);">Download Resume (PDF)</a> <span style="color:#22c55e;">&check;</span>
+                        </div>
+                        <div style="margin-top:0.75rem;"><span class="terminal__cursor"></span></div>
+                    </div>
+                </div>
+                <div class="contact__links reveal reveal-delay-4">
+                    <a href="https://github.com/NANInithin" target="_blank" rel="noopener" class="contact__link" id="link-github">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/naninithin" target="_blank" rel="noopener" class="contact__link" id="link-linkedin">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:naniknsk2002@gmail.com" class="contact__link" id="link-email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                        Email
+                    </a>
+                    <a href="https://huggingface.co/NANI-Nithin" target="_blank" rel="noopener" class="contact__link" id="link-huggingface">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5c-.828 0-1.5-.895-1.5-2s.672-2 1.5-2 1.5.895 1.5 2-.672 2-1.5 2zm3 0c-.828 0-1.5-.895-1.5-2s.672-2 1.5-2 1.5.895 1.5 2-.672 2-1.5 2zm-6.25-5a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm9.5 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/></svg>
+                        HuggingFace
+                    </a>
+                    <a href="https://topmate.io/nani_nithin/" target="_blank" rel="noopener" class="contact__link" id="link-topmate">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        Topmate
+                    </a>
+                    <a href="https://orcid.org/0009-0003-1195-4838" target="_blank" rel="noopener" class="contact__link" id="link-orcid">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.172-.619-3.722-3.891-3.722h-2.428z"/></svg>
+                        ORCID
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Nithin Sai Kumar Kopparapu &mdash; Built with purpose, not templates.</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

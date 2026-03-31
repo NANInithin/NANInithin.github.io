@@ -1,0 +1,207 @@
+/* ====================================
+   Animations & Keyframes
+   ==================================== */
+
+/* --- Cursor Blink --- */
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- Pulse Dot (Status) --- */
+@keyframes pulse-dot {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+}
+
+/* --- Floating Hint --- */
+@keyframes float-hint {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* --- Gentle Float --- */
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- Glow Pulse --- */
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--glow-active);
+    }
+    50% {
+        box-shadow: 0 0 40px var(--glow-active), 0 0 60px var(--glow-active);
+    }
+}
+
+/* --- Slide Up --- */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Slide In Left --- */
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Slide In Right --- */
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Fade In --- */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Scale In --- */
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Terminal Scan Line --- */
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* --- Spin (loading) --- */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- Banana Float --- */
+@keyframes banana-float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(30vw, -20vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(60vw, 10vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(20vw, 30vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* --- Card SVG Animations --- */
+@keyframes dash-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes node-pulse {
+    0%, 100% {
+        r: 3;
+        opacity: 0.8;
+    }
+    50% {
+        r: 5;
+        opacity: 1;
+    }
+}
+
+/* --- Count Up Reveal --- */
+@keyframes count-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Stagger children --- */
+.stagger-children > * {
+    animation: slide-up 0.6s var(--ease-out-expo) both;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+
+/* --- Hero entrance animations --- */
+.hero-enter {
+    animation: slide-up 1s var(--ease-out-expo) both;
+}
+
+.hero-enter--1 { animation-delay: 0.2s; }
+.hero-enter--2 { animation-delay: 0.4s; }
+.hero-enter--3 { animation-delay: 0.6s; }
+.hero-enter--4 { animation-delay: 0.8s; }
+.hero-enter--5 { animation-delay: 1.0s; }
+
+/* --- SVG Visual Boxes --- */
+.project-card__visual--uav {
+    background: linear-gradient(135deg, #0a0f1a 0%, #0f1a2e 100%);
+}
+
+.project-card__visual--edge {
+    background: linear-gradient(135deg, #0f0a1a 0%, #1a0f2e 100%);
+}
+
+.project-card__visual--gan {
+    background: linear-gradient(135deg, #1a0f0a 0%, #2e1a0f 100%);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero__scroll-hint {
+        animation: none;
+    }
+}
