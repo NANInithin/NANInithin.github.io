@@ -165,7 +165,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/Arithmetic-LLM-supervised-pretraining-vs-RL-finetuning'
             },
             'continual-learning': {
-                number: '06 — CONTINUAL LEARNING',
+                number: '05 — CONTINUAL LEARNING',
                 title: 'Continual Learning for Multitask Image Classification',
                 description: 'Explored continual learning strategies to enable neural networks to learn multiple image classification tasks sequentially without catastrophic forgetting of previously learned knowledge.',
                 highlights: [
@@ -178,7 +178,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/Continual-Learning-for-Multitask-Image-Classification'
             },
             'dqn-cartpole': {
-                number: '07 — REINFORCEMENT LEARNING',
+                number: '08 — REINFORCEMENT LEARNING',
                 title: 'Deep Q-Learning — CartPole-v1',
                 description: 'Implementation of Deep Q-Network (DQN) to solve the classic CartPole-v1 environment from OpenAI Gym. Demonstrates core RL concepts including experience replay, target networks, and epsilon-greedy exploration.',
                 highlights: [
@@ -191,7 +191,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/deep-q-learning-cartpole-v1'
             },
             'hanoi-xr': {
-                number: '08 — EXTENDED REALITY',
+                number: '09 — EXTENDED REALITY',
                 title: 'Tower of Hanoi — Extended Reality Game',
                 description: 'An immersive Tower of Hanoi puzzle game built with WebXR, supporting both VR and AR modes. Features 3D disk manipulation, move counting, hint system, and cross-platform browser compatibility.',
                 highlights: [
@@ -204,7 +204,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/Hanoi_Tower_Extended-Reality'
             },
             'image-processing': {
-                number: '09 — IMAGE PROCESSING',
+                number: '04 — IMAGE PROCESSING',
                 title: 'Image Processing Experiments',
                 description: 'Collection of image processing techniques and experiments implemented in Jupyter Notebooks. Covers classical computer vision algorithms, filters, transformations, and analysis methods.',
                 highlights: [
@@ -215,30 +215,6 @@ export class Modal {
                 ],
                 tags: ['OpenCV', 'Python', 'Jupyter', 'Image Processing', 'Computer Vision'],
                 github: 'https://github.com/NANInithin/NANIimage-processing'
-            },
-            'embedded-systems': {
-                number: '10 — EMBEDDED SYSTEMS',
-                title: 'Embedded Systems Projects',
-                description: 'Collection of embedded systems projects implemented in C, covering microcontroller programming, sensor interfaces, and real-time control systems.',
-                highlights: [
-                    'Microcontroller programming in C',
-                    'Sensor interfacing and data acquisition',
-                    'Real-time control implementations'
-                ],
-                tags: ['C', 'Embedded Systems', 'Microcontrollers', 'IoT'],
-                github: 'https://github.com/NANInithin/NANI_embedded-systems'
-            },
-            'arduino': {
-                number: '11 — IoT & HARDWARE',
-                title: 'Arduino Projects',
-                description: 'Hardware projects using Arduino platforms, demonstrating sensor integration, actuator control, and IoT prototyping with C++.',
-                highlights: [
-                    'Arduino-based hardware prototyping',
-                    'Sensor integration projects',
-                    'IoT and connected device experiments'
-                ],
-                tags: ['Arduino', 'C++', 'IoT', 'Hardware', 'Sensors'],
-                github: 'https://github.com/NANInithin/NANIarduino'
             }
         };
         return projects[id];

@@ -305,6 +305,17 @@
     position: relative;
 }
 
+/* Compact collapsed categories */
+.portfolio__category--collapsible {
+    margin-bottom: 0.5rem;
+    transition: margin-bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio__category--collapsible:hover,
+.portfolio__category--collapsible.portfolio__category--expanded {
+    margin-bottom: 4rem;
+}
+
 .portfolio__category-header {
     display: flex;
     align-items: center;
@@ -312,6 +323,82 @@
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
+    cursor: default;
+}
+
+/* Collapsible categories — collapsed by default, expand on header hover */
+.portfolio__category--collapsible .portfolio__category-header {
+    cursor: pointer;
+    transition: all var(--transition-med);
+}
+
+.portfolio__category--collapsible .portfolio__category-header:hover {
+    border-bottom-color: var(--accent-active);
+}
+
+.portfolio__category--collapsible .portfolio__category-header:hover .portfolio__category-number {
+    opacity: 0.4;
+}
+
+/* Chevron indicator */
+.portfolio__category-chevron {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--text-dim);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.portfolio__category--collapsible .portfolio__category-header:hover .portfolio__category-chevron,
+.portfolio__category--collapsible.portfolio__category--expanded .portfolio__category-chevron {
+    transform: rotate(90deg);
+    color: var(--accent-active);
+}
+
+/* Collapsed grid — hide with smooth animation */
+.portfolio__grid--collapsed,
+.portfolio__grid--publications.portfolio__grid--collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease 0.05s;
+    margin-top: 0;
+}
+
+/* Expand on hover over the entire category */
+.portfolio__category--collapsible:hover .portfolio__grid--collapsed,
+.portfolio__category--collapsible.portfolio__category--expanded .portfolio__grid--collapsed,
+.portfolio__category--collapsible:hover .portfolio__grid--publications.portfolio__grid--collapsed,
+.portfolio__category--collapsible.portfolio__category--expanded .portfolio__grid--publications.portfolio__grid--collapsed {
+    max-height: 3000px;
+    opacity: 1;
+    margin-top: 0;
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
+}
+
+/* Publications grid (non-card layout) */
+.portfolio__grid--publications {
+    padding: 0.5rem 0;
+}
+
+/* Publication DOI on hover */
+.pub-card--hover-doi .pub-card__doi {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    padding: 0 0.75rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pub-card--hover-doi:hover .pub-card__doi {
+    max-height: 50px;
+    opacity: 1;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
 }
 
 .portfolio__category-header--right {
@@ -326,7 +413,7 @@
     color: var(--accent-active);
     opacity: 0.15;
     line-height: 1;
-    transition: color var(--transition-med);
+    transition: color var(--transition-med), opacity var(--transition-med);
 }
 
 .portfolio__category-title {

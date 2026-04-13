@@ -146,11 +146,11 @@
                 <h2 class="section__title reveal reveal-delay-1">AI & <span class="gradient-text">Deep Learning</span> Portfolio</h2>
                 <p class="section__desc reveal reveal-delay-2">Research, deployments, and experiments across the full AI stack.</p>
 
-                <!-- CATEGORY 1: Vision & Language (LEFT) -->
+                <!-- CATEGORY 1: Computer Vision & Edge (LEFT) -->
                 <div class="portfolio__category reveal">
                     <div class="portfolio__category-header">
                         <span class="portfolio__category-number">01</span>
-                        <span class="portfolio__category-title">Vision & Language Models</span>
+                        <span class="portfolio__category-title">Computer Vision & Edge AI</span>
                         <span class="portfolio__category-line"></span>
                     </div>
                     <div class="portfolio__grid">
@@ -180,43 +180,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Continual Learning -->
-                        <div class="project-card" data-project="continual-learning" id="project-cl">
-                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0a1a,#1a0a2e);">
-                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                                    <text x="50" y="50" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.5">Task 1</text>
-                                    <text x="165" y="50" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.5">Task 2</text>
-                                    <text x="280" y="50" fill="#a855f7" font-size="8" font-family="monospace" opacity="0.5">Task N</text>
-                                    <rect x="50" y="60" width="80" height="50" rx="4" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
-                                    <rect x="160" y="60" width="80" height="50" rx="4" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.4"/>
-                                    <rect x="270" y="60" width="80" height="50" rx="4" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.4"/>
-                                    <path d="M130 85 L160 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
-                                    <path d="M240 85 L270 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
-                                    <text x="100" y="150" fill="#ef4444" font-size="7" font-family="monospace" opacity="0.4">catastrophic forgetting?</text>
-                                </svg>
-                            </div>
-                            <div class="project-card__body">
-                                <div class="project-card__number">02 — CONTINUAL LEARNING</div>
-                                <h3 class="project-card__title">Multitask Image Classification</h3>
-                                <p class="project-card__desc">Sequential multi-task learning without catastrophic forgetting of previously learned knowledge.</p>
-                                <div class="project-card__tags">
-                                    <span class="tag tag--accent">Continual Learning</span>
-                                    <span class="tag tag--cyan">CNNs</span>
-                                    <span class="tag">PyTorch</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CATEGORY 2: Computer Vision & Edge (RIGHT) -->
-                <div class="portfolio__category reveal">
-                    <div class="portfolio__category-header portfolio__category-header--right">
-                        <span class="portfolio__category-number">02</span>
-                        <span class="portfolio__category-title">Computer Vision & Edge AI</span>
-                        <span class="portfolio__category-line"></span>
-                    </div>
-                    <div class="portfolio__grid">
                         <!-- UAV -->
                         <div class="project-card" data-project="uav-detection" id="project-uav">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0f1a,#0f1a2e);">
@@ -232,7 +195,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">03 — AERIAL DETECTION</div>
+                                <div class="project-card__number">02 — AERIAL DETECTION</div>
                                 <h3 class="project-card__title">Vehicle Detection & Speed Estimation for UAV</h3>
                                 <p class="project-card__desc">UAV-based signaling system for road efficiency and collision prevention at intersections.</p>
                                 <div class="project-card__tags">
@@ -257,7 +220,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">04 — EDGE DEPLOYMENT</div>
+                                <div class="project-card__number">03 — EDGE DEPLOYMENT</div>
                                 <h3 class="project-card__title">Traffic Analysis via Edge AI Modules</h3>
                                 <p class="project-card__desc">Real-time detection and counting on NVIDIA Jetson Nano & Xavier using optimized YOLOv4.</p>
                                 <div class="project-card__tags">
@@ -279,7 +242,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">05 — IMAGE PROCESSING</div>
+                                <div class="project-card__number">04 — IMAGE PROCESSING</div>
                                 <h3 class="project-card__title">Image Processing Experiments</h3>
                                 <p class="project-card__desc">Classical CV algorithms, filters, and transformations in Jupyter Notebooks.</p>
                                 <div class="project-card__tags">
@@ -292,14 +255,40 @@
                     </div>
                 </div>
 
-                <!-- CATEGORY 3: Generative AI & NLP (LEFT) -->
+                <!-- CATEGORY 2: Generative AI & Reinforcement Learning (RIGHT) -->
                 <div class="portfolio__category reveal">
-                    <div class="portfolio__category-header">
-                        <span class="portfolio__category-number">03</span>
-                        <span class="portfolio__category-title">Generative AI & NLP</span>
+                    <div class="portfolio__category-header portfolio__category-header--right">
+                        <span class="portfolio__category-number">02</span>
+                        <span class="portfolio__category-title">Generative AI & Reinforcement Learning</span>
                         <span class="portfolio__category-line"></span>
                     </div>
                     <div class="portfolio__grid">
+                        <!-- Continual Learning -->
+                        <div class="project-card" data-project="continual-learning" id="project-cl">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0a1a,#1a0a2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="50" y="50" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.5">Task 1</text>
+                                    <text x="165" y="50" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.5">Task 2</text>
+                                    <text x="280" y="50" fill="#a855f7" font-size="8" font-family="monospace" opacity="0.5">Task N</text>
+                                    <rect x="50" y="60" width="80" height="50" rx="4" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <rect x="160" y="60" width="80" height="50" rx="4" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.4"/>
+                                    <rect x="270" y="60" width="80" height="50" rx="4" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.4"/>
+                                    <path d="M130 85 L160 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+                                    <path d="M240 85 L270 85" stroke="#8a8a9a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+                                    <text x="100" y="150" fill="#ef4444" font-size="7" font-family="monospace" opacity="0.4">catastrophic forgetting?</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">05 — CONTINUAL LEARNING</div>
+                                <h3 class="project-card__title">Multitask Image Classification</h3>
+                                <p class="project-card__desc">Sequential multi-task learning without catastrophic forgetting of previously learned knowledge.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Continual Learning</span>
+                                    <span class="tag tag--cyan">CNNs</span>
+                                    <span class="tag">PyTorch</span>
+                                </div>
+                            </div>
+                        </div>
                         <!-- GAN -->
                         <div class="project-card" data-project="gan" id="project-gan">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#1a0f0a,#2e1a0f);">
@@ -343,17 +332,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- CATEGORY 4: Reinforcement Learning & XR (RIGHT) -->
-                <div class="portfolio__category reveal">
-                    <div class="portfolio__category-header portfolio__category-header--right">
-                        <span class="portfolio__category-number">04</span>
-                        <span class="portfolio__category-title">Reinforcement Learning & XR</span>
-                        <span class="portfolio__category-line"></span>
-                    </div>
-                    <div class="portfolio__grid">
                         <!-- DQN -->
                         <div class="project-card" data-project="dqn-cartpole" id="project-dqn">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a1a,#0f2e2e);">
@@ -376,6 +354,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORY 3: Others (LEFT) -->
+                <div class="portfolio__category reveal">
+                    <div class="portfolio__category-header">
+                        <span class="portfolio__category-number">03</span>
+                        <span class="portfolio__category-title">Others</span>
+                        <span class="portfolio__category-line"></span>
+                    </div>
+                    <div class="portfolio__grid">
                         <!-- Hanoi XR -->
                         <div class="project-card" data-project="hanoi-xr" id="project-xr">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#1a100a,#2e1a0a);">
@@ -405,59 +394,6 @@
                     </div>
                 </div>
 
-                <!-- CATEGORY 5: Embedded & IoT (LEFT) -->
-                <div class="portfolio__category reveal">
-                    <div class="portfolio__category-header">
-                        <span class="portfolio__category-number">05</span>
-                        <span class="portfolio__category-title">Embedded Systems & IoT</span>
-                        <span class="portfolio__category-line"></span>
-                    </div>
-                    <div class="portfolio__grid">
-                        <!-- Embedded -->
-                        <div class="project-card" data-project="embedded-systems" id="project-embed">
-                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0f1a0a,#1a2e0f);">
-                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="130" y="55" width="140" height="90" rx="6" fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0.4"/>
-                                    <rect x="160" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
-                                    <rect x="185" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
-                                    <rect x="210" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
-                                    <rect x="235" y="75" width="15" height="15" rx="1" fill="none" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
-                                    <text x="160" y="120" fill="#22c55e" font-size="8" font-family="monospace" opacity="0.5">MCU</text>
-                                </svg>
-                            </div>
-                            <div class="project-card__body">
-                                <div class="project-card__number">10 — EMBEDDED SYSTEMS</div>
-                                <h3 class="project-card__title">Embedded Systems Projects</h3>
-                                <p class="project-card__desc">Microcontroller programming, sensor integration, and real-time control in C.</p>
-                                <div class="project-card__tags">
-                                    <span class="tag tag--accent">C</span>
-                                    <span class="tag tag--cyan">Microcontrollers</span>
-                                    <span class="tag">IoT</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Arduino -->
-                        <div class="project-card" data-project="arduino" id="project-arduino">
-                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a1a,#0a2e1a);">
-                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="200" cy="100" r="40" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.3"/>
-                                    <text x="175" y="105" fill="#22d3ee" font-size="10" font-family="monospace" opacity="0.5">∞</text>
-                                    <text x="140" y="160" fill="#8a8a9a" font-size="7" font-family="monospace" opacity="0.3">Arduino • C++ • Sensors</text>
-                                </svg>
-                            </div>
-                            <div class="project-card__body">
-                                <div class="project-card__number">11 — IoT & HARDWARE</div>
-                                <h3 class="project-card__title">Arduino Projects</h3>
-                                <p class="project-card__desc">Hardware prototyping with sensor integration and IoT experiments.</p>
-                                <div class="project-card__tags">
-                                    <span class="tag tag--accent">Arduino</span>
-                                    <span class="tag tag--cyan">C++</span>
-                                    <span class="tag">Sensors</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </section>
@@ -466,8 +402,8 @@
         <!-- ===================== EXPERIENCE ===================== -->
         <section id="experience" class="section">
             <div class="section__inner">
-                <span class="section__label reveal">// Career &amp; Publications</span>
-                <h2 class="section__title reveal reveal-delay-1">Experience &amp; <span class="gradient-text">Research</span></h2>
+                <span class="section__label reveal">// Career &amp; Education</span>
+                <h2 class="section__title reveal reveal-delay-1">Experience &amp; <span class="gradient-text">Education</span></h2>
 
                 <div class="experience__grid">
                     <div class="reveal reveal-delay-2">
@@ -522,7 +458,7 @@
                     <div class="reveal reveal-delay-3">
                         <h3 style="font-size:0.85rem;color:var(--accent-cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:2rem;">Publications</h3>
                         <div class="publications">
-                            <div class="pub-card">
+                            <div class="pub-card pub-card--hover-doi">
                                 <div class="pub-card__icon">&#128196;</div>
                                 <div class="pub-card__title">Measuring the Vehicle-in-Motion, Density and Allocation of Traffic Signal Using Transfer Learning</div>
                                 <div class="pub-card__venue">3rd Intl. Conf. on AI and Knowledge Processing, Oct 2023 &mdash; Springer</div>
@@ -531,7 +467,7 @@
                                     DOI: 10.1007/978-3-031-68617-7_19
                                 </a>
                             </div>
-                            <div class="pub-card">
+                            <div class="pub-card pub-card--hover-doi">
                                 <div class="pub-card__icon">&#128196;</div>
                                 <div class="pub-card__title">Detecting and Classifying the Vehicles in Traffic Signal Using Transfer Learning</div>
                                 <div class="pub-card__venue">2nd Intl. Conf. on Signal &amp; Data Processing (ICSDP 2022) &mdash; Springer</div>
