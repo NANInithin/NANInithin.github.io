@@ -7,6 +7,7 @@ import { Navigation } from './navigation.js';
 import { Terminal } from './terminal.js';
 import { EasterEgg } from './easter-egg.js';
 import { Modal } from './modal.js';
+import { VisitorCounter } from './visitor-counter.js';
 
 class App {
     constructor() {
@@ -29,6 +30,7 @@ class App {
         new Terminal();
         new Modal();
         new EasterEgg(particleSystem);
+        new VisitorCounter();
 
         this.initSmoothLinks();
 
