@@ -8,8 +8,7 @@
     <meta name="description"
         content="Portfolio of Nithin Sai Kumar Kopparapu — AI Researcher and Deep Learning Engineer. M2 in Machine Vision & AI at Université Paris-Saclay. Specializing in VLMs, computer vision, and intelligent systems.">
     <meta name="author" content="Nithin Sai Kumar Kopparapu">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A7%A0</text></svg>">
+    <link rel="icon" type="image/png" href="Assets/77537690.png">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -27,6 +26,25 @@
     <canvas id="particles-canvas"></canvas>
     <div class="hidden-banana" id="easter-egg-banana" title="&#127820;"
         style="top:30%;left:10%;animation:banana-float 60s linear infinite;">&#127820;</div>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header" id="site-header">
+        <div class="site-header__inner">
+            <a href="#hero" class="site-header__brand" id="header-brand">
+                <img src="Assets/77537690.png" alt="Nithin's logo" class="site-header__logo" />
+                <span class="site-header__name">Nithin Sai Kumar <span class="site-header__name--dim">Kopparapu</span></span>
+            </a>
+            <nav class="site-header__nav" id="header-nav">
+                <a href="#portfolio" class="site-header__link" data-section="portfolio">Projects</a>
+                <a href="#experience" class="site-header__link" data-section="experience">Experience &amp; Education</a>
+                <a href="#console" class="site-header__link" data-section="console">Skills</a>
+                <a href="#contact" class="site-header__link site-header__link--cta" data-section="contact">Get in Touch</a>
+            </nav>
+            <button class="site-header__hamburger" id="header-hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
     <!-- Neural Network Navigation -->
     <nav class="nav-neural" id="nav-neural" aria-label="Section navigation">
@@ -117,20 +135,10 @@
                     Systems That See
                 </h1>
                 <p class="hero__sub hero-enter hero-enter--3">
-                    Nithin Sai Kumar Kopparapu &mdash; AI Researcher &amp; Deep Learning Engineer<br>
+                    AI Researcher &amp; Deep Learning Engineer<br>
                     From vision-language models to edge deployment &mdash; turning research into real-world AI
                 </p>
-                <div class="hero__cta-group hero-enter hero-enter--4">
-                    <a href="#portfolio" class="btn btn--primary" id="cta-projects">
-                        Explore Projects
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M7 17L17 7M17 7H7M17 7v10" />
-                        </svg>
-                    </a>
-                    <a href="#contact" class="btn btn--outline" id="cta-contact">Get in Touch</a>
-                </div>
-                <div class="hero__scroll-hint hero-enter hero-enter--5">
+                <div class="hero__scroll-hint hero-enter hero-enter--4">
                     <span>scroll</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 5v14M5 12l7 7 7-7" />
