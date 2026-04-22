@@ -1,6 +1,6 @@
 // ====================================
 // Scroll-based Navigation
-// Neural Network Nav + Reveal Observer
+// Neural Network Nav + Header + Reveal Observer
 // ====================================
 
 import { throttle } from './utils.js';
@@ -14,10 +14,18 @@ export class Navigation {
         this.currentSection = 'hero';
         this.sectionIds = ['hero', 'portfolio', 'experience', 'console', 'contact'];
 
+        // Header elements
+        this.header = document.getElementById('site-header');
+        this.headerLinks = document.querySelectorAll('.site-header__link');
+        this.hamburger = document.getElementById('header-hamburger');
+        this.headerNav = document.getElementById('header-nav');
+
         this.initObserver();
         this.initNavClicks();
         this.initRevealObserver();
         this.initMetricCounters();
+        this.initHeaderScroll();
+        this.initHamburger();
     }
 
     initObserver() {
@@ -32,6 +40,7 @@ export class Navigation {
                 if (entry.isIntersecting) {
                     this.currentSection = entry.target.id;
                     this.updateNav(entry.target.id);
+                    this.updateHeaderLinks(entry.target.id);
                 }
             });
         }, options);
@@ -67,6 +76,43 @@ export class Navigation {
         // Update connections - light up connections up to the active node
         this.navConnections.forEach((conn, i) => {
             conn.classList.toggle('active', i < activeIdx);
+        });
+    }
+
+    updateHeaderLinks(activeId) {
+        this.headerLinks.forEach((link) => {
+            const linkSection = link.dataset.section;
+            link.classList.toggle('active', linkSection === activeId);
+        });
+    }
+
+    initHeaderScroll() {
+        if (!this.header) return;
+
+        const onScroll = throttle(() => {
+            const scrolled = window.scrollY > 60;
+            this.header.classList.toggle('header--scrolled', scrolled);
+        }, 50);
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Run once on load
+        onScroll();
+    }
+
+    initHamburger() {
+        if (!this.hamburger || !this.headerNav) return;
+
+        this.hamburger.addEventListener('click', () => {
+            this.hamburger.classList.toggle('open');
+            this.headerNav.classList.toggle('nav--open');
+        });
+
+        // Close mobile nav on link click
+        this.headerLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                this.hamburger.classList.remove('open');
+                this.headerNav.classList.remove('nav--open');
+            });
         });
     }
 
