@@ -5,38 +5,83 @@
 export class VisitorCounter {
     constructor() {
         this.counterEl = document.getElementById('visitor-count-number');
-        this.pixelImg = document.getElementById('hits-pixel');
-        if (this.counterEl && this.pixelImg) {
+        if (this.counterEl) {
             this.fetchCount();
         }
     }
 
     async fetchCount() {
-        try {
-            // Fetch the SVG badge which contains the count and also registers the hit
-            const res = await fetch(
-                'https://hits.sh/naninithin.github.io.svg?view=today-total&style=flat-square',
-                { mode: 'cors' }
-            );
-            const svgText = await res.text();
+        const badgeUrl = 'https://hits.sh/naninithin.github.io.svg?view=today-total&style=flat-square';
 
-            // Parse total count from SVG text nodes — hits.sh puts
-            // "today / total" in the SVG, we want the total (second number)
-            const matches = svgText.match(/>\s*(\d+)\s*\/\s*(\d+)\s*</);
-            if (matches && matches[2]) {
-                this.animateCount(parseInt(matches[2], 10));
-            } else {
-                // Fallback: try to find any number in the SVG
-                const numMatch = svgText.match(/>(\d+)</g);
-                if (numMatch && numMatch.length > 0) {
-                    const lastNum = numMatch[numMatch.length - 1].replace(/[><]/g, '');
-                    this.animateCount(parseInt(lastNum, 10));
-                }
+        // The <img> tag in the footer still loads the badge (registering the hit).
+        // We just need to read the count. Try multiple methods:
+
+        const proxyUrls = [
+            // Direct (in case hits.sh adds CORS support)
+            badgeUrl,
+            // CORS proxies
+            `https://api.allorigins.win/raw?url=${encodeURIComponent(badgeUrl)}`,
+            `https://corsproxy.io/?url=${encodeURIComponent(badgeUrl)}`,
+            `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(badgeUrl)}`
+        ];
+
+        for (const url of proxyUrls) {
+            const count = await this.tryFetch(url);
+            if (count !== null) {
+                this.animateCount(count);
+                return;
             }
-        } catch (err) {
-            console.warn('Visitor counter unavailable:', err);
-            // Keep the dash as fallback
         }
+
+        console.warn('Visitor counter: all fetch methods failed');
+    }
+
+    async tryFetch(url) {
+        try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000);
+
+            const res = await fetch(url, {
+                mode: 'cors',
+                signal: controller.signal
+            });
+            clearTimeout(timeout);
+
+            if (!res.ok) return null;
+            const svgText = await res.text();
+            return this.parseCount(svgText);
+        } catch (err) {
+            return null;
+        }
+    }
+
+    parseCount(svgText) {
+        // Try "today / total" pattern in text nodes: >4 / 97<
+        const slashMatch = svgText.match(/>\s*(\d+)\s*\/\s*(\d+)\s*</);
+        if (slashMatch && slashMatch[2]) {
+            return parseInt(slashMatch[2], 10);
+        }
+
+        // Try aria-label="hits: 4 / 97"
+        const ariaMatch = svgText.match(/aria-label="[^"]*?(\d+)\s*\/\s*(\d+)/);
+        if (ariaMatch && ariaMatch[2]) {
+            return parseInt(ariaMatch[2], 10);
+        }
+
+        // Try title element: <title>hits: 4 / 97</title>
+        const titleMatch = svgText.match(/<title>[^<]*?(\d+)\s*\/\s*(\d+)[^<]*<\/title>/);
+        if (titleMatch && titleMatch[2]) {
+            return parseInt(titleMatch[2], 10);
+        }
+
+        // Fallback: grab the last number in the SVG
+        const numMatches = svgText.match(/>(\d+)</g);
+        if (numMatches && numMatches.length > 0) {
+            const lastNum = numMatches[numMatches.length - 1].replace(/[><]/g, '');
+            return parseInt(lastNum, 10);
+        }
+
+        return null;
     }
 
     animateCount(target) {
