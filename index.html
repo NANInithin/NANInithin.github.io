@@ -111,6 +111,37 @@
     <!-- Toast -->
     <div class="toast" id="toast">Counterfactual mode activated — the banana was never there.</div>
 
+    <!-- Banana Domain Choice Overlay -->
+    <div class="banana-choice-overlay" id="banana-choice-overlay">
+        <div class="banana-choice">
+            <div class="banana-choice__header">
+                <span class="banana-choice__emoji">&#127820;</span>
+                <h2 class="banana-choice__title">Choose Your <span class="gradient-text">Voyage</span></h2>
+                <p class="banana-choice__sub">Select a domain to embark on an immersive journey through the cosmos of AI</p>
+            </div>
+            <div class="banana-choice__cards">
+                <button class="banana-choice__card" data-domain="cv-edge" id="choice-cv-edge">
+                    <div class="banana-choice__card-icon">&#128301;</div>
+                    <h3 class="banana-choice__card-title">Computer Vision &amp; Edge AI</h3>
+                    <p class="banana-choice__card-desc">VLMs, object detection, Jetson deployment, image processing &amp; more</p>
+                    <span class="banana-choice__card-count">6 planets to explore</span>
+                </button>
+                <button class="banana-choice__card" data-domain="rl-gen" id="choice-rl-gen">
+                    <div class="banana-choice__card-icon">&#129504;</div>
+                    <h3 class="banana-choice__card-title">Reinforcement Learning &amp; Generative AI</h3>
+                    <p class="banana-choice__card-desc">DQN, GANs, VAEs, LLMs, continual learning &amp; more</p>
+                    <span class="banana-choice__card-count">6 planets to explore</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Space Journey Container -->
+    <div class="space-journey" id="space-journey-container">
+        <canvas id="space-journey-canvas"></canvas>
+        <div class="sj-hud" id="space-journey-hud"></div>
+    </div>
+
     <!-- Modal Overlay -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal-panel">
@@ -543,7 +574,7 @@
                         </div>
                         <div style="margin-top:1.5rem;"><span class="terminal__prompt">visitor@nithin.dev:~$</span><span class="terminal__command"> fetch_resume --format=pdf</span></div>
                         <div class="terminal__output" style="margin-top:0.5rem;">
-                            <span style="color:#22c55e;">&rarr;</span> <a href="https://raw.githubusercontent.com/NANInithin/NaniNithin_Portfolio/main/Assets/Nithin_resume.pdf" download="Nithin_Kopparapu_Resume.pdf" style="color:var(--accent-cyan);">Download Resume (PDF)</a> <span style="color:#22c55e;">&check;</span>
+                            <span style="color:#22c55e;">&rarr;</span> <a href="https://raw.githubusercontent.com/NANInithin/NANInithin.github.io/main/Assets/Nithin_resume.pdf" download="Nithin_Kopparapu_Resume.pdf" style="color:var(--accent-cyan);">Download Resume (PDF)</a> <span style="color:#22c55e;">&check;</span>
                         </div>
                         <div style="margin-top:0.75rem;"><span class="terminal__cursor"></span></div>
                     </div>
@@ -579,6 +610,7 @@
 
         <footer class="footer">
             <p>&copy; 2026 Nithin Sai Kumar Kopparapu &mdash; Built with purpose, not templates.</p>
+            <p class="footer__easter-hint" id="easter-hint">&#128373;&#65039; <em>Psst… find the hidden &#127820; for a secret voyage.</em></p>
             <div class="footer__visitor-count" id="visitor-counter">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
@@ -586,7 +618,7 @@
                 </svg>
                 <span id="visitor-count-number">—</span>
                 <span class="footer__visitor-label">unique visitors</span>
-                <img src="https://hits.sh/naninithin.github.io.svg?view=today-total&style=flat-square&label=&color=transparent&labelColor=transparent" alt="" class="footer__hits-pixel" id="hits-pixel" crossorigin="anonymous"/>
+                <img data-src="https://hits.sh/naninithin.github.io.svg?view=today-total&style=flat-square&label=&color=transparent&labelColor=transparent" alt="" class="footer__hits-pixel" id="hits-pixel" crossorigin="anonymous"/>
             </div>
         </footer>
     </div>

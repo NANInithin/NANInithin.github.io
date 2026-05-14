@@ -83,7 +83,10 @@ export class Modal {
 
     close() {
         this.overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        this.overlay.style.zIndex = '';
+        // Keep overflow hidden if space journey is active
+        const sjActive = document.querySelector('.space-journey.active');
+        if (!sjActive) document.body.style.overflow = '';
         this.isOpen = false;
     }
 

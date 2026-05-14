@@ -28,8 +28,8 @@ class App {
 
         new Navigation();
         new Terminal();
-        new Modal();
-        new EasterEgg(particleSystem);
+        const modal = new Modal();
+        new EasterEgg(particleSystem, modal);
         new VisitorCounter();
 
         this.initSmoothLinks();

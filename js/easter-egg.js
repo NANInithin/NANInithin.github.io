@@ -1,69 +1,65 @@
 // ====================================
-// Purple Banana Easter Egg
-// Click hidden banana to toggle accent colors
+// Easter Egg — Domain Selection → Space Journey
+// Click hidden banana to launch an immersive voyage
 // ====================================
 
-export class EasterEgg {
-    constructor(particleSystem) {
-        this.banana = document.getElementById('easter-egg-banana');
-        this.toast = document.getElementById('toast');
-        this.particleSystem = particleSystem;
-        this.isActive = false;
-        this.timeout = null;
+import { SpaceJourney } from './space-journey.js';
 
-        if (!this.banana) return;
+export class EasterEgg {
+    constructor(particleSystem, modal) {
+        this.banana = document.getElementById('easter-egg-banana');
+        this.choiceOverlay = document.getElementById('banana-choice-overlay');
+        this.particleSystem = particleSystem;
+        this.modal = modal;
+        this.journey = null;
+
+        if (!this.banana || !this.choiceOverlay) return;
         this.init();
     }
 
     init() {
-        this.banana.addEventListener('click', () => this.toggle());
+        this.banana.addEventListener('click', () => this._showChoice());
+
+        // Choice card click handlers
+        this.choiceOverlay.querySelectorAll('.banana-choice__card').forEach(card => {
+            card.addEventListener('click', () => {
+                const domain = card.dataset.domain;
+                this._launchJourney(domain);
+            });
+        });
+
+        // Close overlay on backdrop click
+        this.choiceOverlay.addEventListener('click', (e) => {
+            if (e.target === this.choiceOverlay) this._hideChoice();
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.choiceOverlay.classList.contains('active')) {
+                this._hideChoice();
+            }
+        });
     }
 
-    toggle() {
-        if (this.isActive) {
-            this.deactivate();
-        } else {
-            this.activate();
+    _showChoice() {
+        this.choiceOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    _hideChoice() {
+        this.choiceOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    _launchJourney(domainKey) {
+        this._hideChoice();
+
+        // Destroy any previous journey
+        if (this.journey) {
+            this.journey.destroy();
         }
-    }
 
-    activate() {
-        this.isActive = true;
-
-        // Toggle CSS class on root
-        document.documentElement.classList.add('purple-mode');
-
-        // Update Three.js particle color
-        if (this.particleSystem) {
-            this.particleSystem.setAccentColor('#a855f7');
-        }
-
-        // Show toast
-        this.showToast();
-
-        // Auto-revert after 15 seconds
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.deactivate(), 15000);
-    }
-
-    deactivate() {
-        this.isActive = false;
-        document.documentElement.classList.remove('purple-mode');
-
-        if (this.particleSystem) {
-            this.particleSystem.setAccentColor('#f5d547');
-        }
-
-        this.hideToast();
-        clearTimeout(this.timeout);
-    }
-
-    showToast() {
-        this.toast.classList.add('visible');
-        setTimeout(() => this.hideToast(), 4000);
-    }
-
-    hideToast() {
-        this.toast.classList.remove('visible');
+        this.journey = new SpaceJourney(this.modal);
+        this.journey.launch(domainKey);
     }
 }
