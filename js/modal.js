@@ -218,6 +218,39 @@ export class Modal {
                 ],
                 tags: ['OpenCV', 'Python', 'Jupyter', 'Image Processing', 'Computer Vision'],
                 github: 'https://github.com/NANInithin/NANIimage-processing'
+            },
+            'cityquest-ai': {
+                number: '09 — AI AGENT',
+                title: 'CityQuest AI',
+                description: 'A location-based game application that generates interactive games (scavenger hunts, hide-and-seek, tag) using AI. Uses a custom LoRA fine-tuned NVIDIA Nemotron-3-Nano-4B model to dynamically produce game content in structured JSON format based on real-world locations.',
+                highlights: [
+                    'Custom LoRA fine-tune of Nemotron-3-Nano-4B for domain-specific game generation',
+                    'Structured JSON output schema for game data',
+                    'GGUF quantized (Q4_K_M) for efficient local inference via llama.cpp',
+                    'Custom dataset of ~840 training examples for location-based games',
+                    'Model hosted on HuggingFace for easy deployment'
+                ],
+                metrics: [
+                    { value: '4B', label: 'Base Model Params', color: 'var(--accent-active)' },
+                    { value: '840', label: 'Training Examples', color: 'var(--accent-cyan)' },
+                    { value: 'Q4_K_M', label: 'Quantization', color: '#22c55e' }
+                ],
+                tags: ['Nemotron', 'LoRA', 'Unsloth', 'llama.cpp', 'GGUF', 'Python', 'HuggingFace'],
+                github: 'https://github.com/NANInithin/CityQuest-AI',
+                huggingface: 'https://huggingface.co/NANI-Nithin/CityQuest-Nemotron-3-Nano-4B-GGUF'
+            },
+            'agent-voca': {
+                number: '10 — VOICE AI',
+                title: 'AgentVoca',
+                description: 'Voice-powered AI agent platform enabling natural language interaction for task automation and intelligent assistance. Combines speech processing with large language model capabilities.',
+                highlights: [
+                    'Voice-driven AI agent interaction',
+                    'Natural language task automation',
+                    'Intelligent multi-modal assistance',
+                    'End-to-end voice-to-action pipeline'
+                ],
+                tags: ['AI Agents', 'Voice AI', 'LLMs', 'Python', 'NLP'],
+                github: 'https://github.com/NANInithin/AgentVoca'
             }
         };
         return projects[id];

@@ -8,7 +8,7 @@ import * as THREE from 'three';
 /* ─── Domain content ─── */
 const DOMAINS = {
     'cv-edge': {
-        title: 'Computer Vision & Edge AI',
+        title: 'Computer Vision Research & Engineering',
         color: '#22d3ee',
         planets: [
             {
@@ -44,7 +44,7 @@ const DOMAINS = {
         ]
     },
     'rl-gen': {
-        title: 'Reinforcement Learning & Generative AI',
+        title: 'Machine Learning Research & Engineering',
         color: '#a855f7',
         planets: [
             {
