@@ -891,6 +891,30 @@
     line-height: 1.6;
 }
 
+/* Inline Logos */
+.inline-logo {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    opacity: 0.7;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    position: relative;
+    top: -1px;
+}
+
+.timeline__item:hover .inline-logo,
+.pub-card:hover .inline-logo {
+    opacity: 1;
+    filter: none;
+}
+
+.timeline__company .inline-logo,
+.pub-card__venue .inline-logo {
+    height: 18px;
+}
+
 /* Publications */
 .publications {
     display: flex;
@@ -949,6 +973,103 @@
 .pub-card__doi:hover {
     border-color: var(--accent-cyan);
     opacity: 1;
+}
+
+/* --- EXPANDABLE SECTIONS (Achievements & Certifications) --- */
+.expandable-section {
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.expandable-section:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.08), 0 0 40px rgba(168, 85, 247, 0.05);
+}
+
+.expandable-section__heading {
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.expandable-section:hover .expandable-section__heading {
+    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.04), rgba(168, 85, 247, 0.04));
+}
+
+.expandable-section__icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.expandable-section__hint {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    font-style: italic;
+    opacity: 0.6;
+    margin-left: auto;
+    transition: opacity 0.4s ease;
+}
+
+.expandable-section:hover .expandable-section__hint {
+    opacity: 0;
+}
+
+.expandable-section__arrow {
+    display: flex;
+    align-items: center;
+    color: var(--text-dim);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+.expandable-section:hover .expandable-section__arrow {
+    transform: rotate(180deg);
+    color: var(--accent-cyan);
+}
+
+.expandable-section__content {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 1.5rem;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandable-section:hover .expandable-section__content {
+    max-height: 800px;
+    opacity: 1;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.expandable-section__content .publications {
+    gap: 0.75rem;
+}
+
+.expandable-section__content .pub-card {
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.04);
+}
+
+.expandable-section + .expandable-section {
+    margin-top: 1rem;
 }
 
 /* --- SECTION 5: CONSOLE (SKILLS) --- */

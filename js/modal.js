@@ -251,6 +251,20 @@ export class Modal {
                 ],
                 tags: ['AI Agents', 'Voice AI', 'LLMs', 'Python', 'NLP'],
                 github: 'https://github.com/NANInithin/AgentVoca'
+            },
+            'azure-ocr': {
+                number: '12 — AI ENGINEERING',
+                title: 'Azure OCR Job Matcher',
+                description: 'Automated candidate-to-job matching platform powered by Azure AI Document Intelligence and Large Language Models. Extracts structured candidate profiles from unstructured resumes (PDFs, images) and evaluates semantic fit against job postings with explainable match scores.',
+                highlights: [
+                    'Azure AI Document Intelligence for OCR text and layout extraction',
+                    'Semantic job matching using vector embeddings and LLM-based scoring',
+                    'Automatic skill, education, and certification extraction into structured JSON',
+                    'Skill gap analysis between candidate profiles and job descriptions',
+                    'Batch processing pipeline with interactive UI for candidate ranking'
+                ],
+                tags: ['Azure AI', 'OCR', 'LLMs', 'Python', 'NLP', 'Vector Embeddings', 'FastAPI'],
+                github: 'https://github.com/NANInithin/azure-ocr-job-matcher'
             }
         };
         return projects[id];
