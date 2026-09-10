@@ -48,8 +48,8 @@ const DOMAINS = {
         color: '#a855f7',
         planets: [
             {
-                id: 'arithmetic-llm', title: 'Arithmetic LLM',
-                sub: 'Supervised pretraining vs RL fine-tuning',
+                id: 'arithmetic-llm', title: 'Arithmetic LLM (v4)',
+                sub: '95% accuracy — scratchpad CoT on Modal',
                 color: '#f5d547', rings: true, size: 1.6
             },
             {
@@ -68,9 +68,9 @@ const DOMAINS = {
                 color: '#22c55e', rings: true, size: 1.2
             },
             {
-                id: null, title: 'Transformers & NLP',
-                sub: 'Attention mechanisms & language models',
-                color: '#f97316', rings: false, size: 1.4
+                id: 'agent-quantix', title: 'AgentQuantix',
+                sub: 'Autonomous GGUF quantization agent',
+                color: '#f97316', rings: true, size: 1.5
             },
             {
                 id: null, title: 'MCP Hackathon',

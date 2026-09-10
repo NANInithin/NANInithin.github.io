@@ -354,20 +354,24 @@
                         <div class="project-card" data-project="arithmetic-llm" id="project-llm">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a0f,#0f2e1a);">
                                 <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                                    <text x="100" y="55" fill="#22d3ee" font-size="10" font-family="monospace" opacity="0.6">Supervised</text>
-                                    <text x="240" y="55" fill="#f5d547" font-size="10" font-family="monospace" opacity="0.6">RL</text>
-                                    <text x="130" y="100" fill="#8a8a9a" font-size="14" font-family="monospace" opacity="0.4">27 + 145 = ?</text>
-                                    <text x="155" y="130" fill="#22c55e" font-size="10" font-family="monospace" opacity="0.5">→ 172 ✓</text>
+                                    <text x="75" y="45" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.7">Modal Cloud • A100/H100</text>
+                                    <text x="245" y="45" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.7">v4 ~310M CoT</text>
+                                    <rect x="65" y="60" width="270" height="75" rx="5" fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0.3"/>
+                                    <text x="80" y="85" fill="#8a8a9a" font-size="10" font-family="monospace" opacity="0.5">34938 - 6553 = ? [scratchpad]</text>
+                                    <text x="80" y="108" fill="#22c55e" font-size="11" font-family="monospace" opacity="0.9">→ 28385 ✓ (100% Subtraction)</text>
+                                    <text x="80" y="125" fill="#f5d547" font-size="8" font-family="monospace" opacity="0.7">Overall 5-digit: 95.00% (475/500)</text>
+                                    <text x="125" y="175" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">supervised pretrain + RL curriculum</text>
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">07 — NLP / LLM</div>
-                                <h3 class="project-card__title">Arithmetic LLM — Pretraining vs RL</h3>
-                                <p class="project-card__desc">Can small LMs learn arithmetic? Comparing supervised pretraining and RL fine-tuning paradigms.</p>
+                                <div class="project-card__number">07 — NLP / LLM (v4)</div>
+                                <h3 class="project-card__title">Arithmetic LLM — Supervised vs RL</h3>
+                                <p class="project-card__desc">~310M decoder Transformer achieving 95% accuracy on 5-digit arithmetic using Scratchpad Chain-of-Thought on Modal cloud.</p>
                                 <div class="project-card__tags">
                                     <span class="tag tag--accent">Transformers</span>
-                                    <span class="tag tag--cyan">RL</span>
-                                    <span class="tag">NLP</span>
+                                    <span class="tag tag--cyan">Chain-of-Thought</span>
+                                    <span class="tag">Modal A100</span>
+                                    <span class="tag">RL</span>
                                 </div>
                             </div>
                         </div>
@@ -404,6 +408,48 @@
                         <span class="portfolio__category-line"></span>
                     </div>
                     <div class="portfolio__grid">
+                        <!-- AgentQuantix (New Project) -->
+                        <div class="project-card project-card--featured" data-project="agent-quantix" id="project-agentquantix">
+                            <div class="project-card__featured-badge"><span class="tag tag--cyan">★ New Project</span></div>
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a131f,#091a2e);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="50" y="36" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.8">$ aqx research &amp; quantize</text>
+                                    <!-- Feasibility pipeline -->
+                                    <rect x="45" y="48" width="90" height="42" rx="4" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.5"/>
+                                    <text x="53" y="65" fill="#22d3ee" font-size="7" font-family="monospace">HF Trending</text>
+                                    <text x="53" y="80" fill="#8a8a9a" font-size="6" font-family="monospace">Top 100 Hub</text>
+                                    <path d="M135 69 L155 69" stroke="#f5d547" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+                                    
+                                    <rect x="155" y="48" width="95" height="42" rx="4" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.6"/>
+                                    <text x="163" y="65" fill="#f5d547" font-size="7" font-family="monospace">Feasibility Gate</text>
+                                    <text x="163" y="80" fill="#8a8a9a" font-size="6" font-family="monospace">VRAM • Disk Calc</text>
+                                    <path d="M250 69 L270 69" stroke="#a855f7" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+
+                                    <rect x="270" y="48" width="90" height="42" rx="4" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                                    <text x="278" y="65" fill="#a855f7" font-size="7" font-family="monospace">llama.cpp GGUF</text>
+                                    <text x="278" y="80" fill="#8a8a9a" font-size="6" font-family="monospace">29 Quants + imatrix</text>
+
+                                    <!-- Bottom status terminal -->
+                                    <rect x="45" y="102" width="315" height="52" rx="4" fill="rgba(0,0,0,0.3)" stroke="#22c55e" stroke-width="0.6" opacity="0.4"/>
+                                    <text x="55" y="120" fill="#22c55e" font-size="6.5" font-family="monospace">[OK] Bounded Queue: quantize → verify → hub upload</text>
+                                    <text x="55" y="134" fill="#8a8a9a" font-size="6.5" font-family="monospace">Zero disk overflow • CLI + MCP protocol support</text>
+                                    <text x="55" y="147" fill="#f5d547" font-size="6" font-family="monospace">Dual human approval gates • Autonomous pipeline</text>
+                                    <text x="120" y="180" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">autonomous GGUF quantization agent</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">09 — AI AGENT / QUANTIZATION</div>
+                                <h3 class="project-card__title">AgentQuantix — Autonomous Quantization Agent</h3>
+                                <p class="project-card__desc">Autonomous CLI &amp; MCP pipeline agent scanning trending Hugging Face models, calculating hardware feasibility, and generating verified GGUF quants via llama.cpp.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">AI Agents</span>
+                                    <span class="tag tag--cyan">llama.cpp</span>
+                                    <span class="tag">GGUF</span>
+                                    <span class="tag">MCP</span>
+                                    <span class="tag">HuggingFace</span>
+                                </div>
+                            </div>
+                        </div>
                         <!-- CityQuest AI -->
                         <div class="project-card" data-project="cityquest-ai" id="project-cityquest">
                             <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a2e,#1a0a2e);">
@@ -427,7 +473,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">09 — AI AGENT</div>
+                                <div class="project-card__number">10 — AI AGENT</div>
                                 <h3 class="project-card__title">CityQuest AI</h3>
                                 <p class="project-card__desc">AI-powered city exploration and quest generation platform leveraging intelligent agents for interactive urban discovery.</p>
                                 <div class="project-card__tags">
@@ -454,16 +500,17 @@
                                     <circle cx="300" cy="80" r="3" fill="#22c55e" opacity="0.3"/>
                                     <line x1="103" y1="80" x2="120" y2="90" stroke="#22c55e" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.3"/>
                                     <line x1="280" y1="90" x2="297" y2="80" stroke="#22c55e" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.3"/>
-                                    <text x="130" y="175" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">voice-powered AI agent</text>
+                                    <text x="110" y="175" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">model-agnostic voice dictation &amp; observer mode</text>
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">10 — VOICE AI</div>
-                                <h3 class="project-card__title">AgentVoca</h3>
-                                <p class="project-card__desc">Voice-powered AI agent platform enabling natural language interaction for task automation and intelligent assistance.</p>
+                                <div class="project-card__number">11 — VOICE DICTATION &amp; OBSERVER</div>
+                                <h3 class="project-card__title">AgentVoca — Model-Agnostic Voice Dictation</h3>
+                                <p class="project-card__desc">Developer-first voice dictation desktop app for macOS &amp; Windows with Observer multimodal recording, RapidOCR (ONNX), local Whisper, and cursor insertion.</p>
                                 <div class="project-card__tags">
-                                    <span class="tag tag--accent">AI Agents</span>
-                                    <span class="tag tag--cyan">Voice AI</span>
+                                    <span class="tag tag--accent">Voice AI</span>
+                                    <span class="tag tag--cyan">faster-whisper</span>
+                                    <span class="tag">RapidOCR</span>
                                     <span class="tag">LLMs</span>
                                 </div>
                             </div>
@@ -484,9 +531,9 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">11 — EXTENDED REALITY</div>
+                                <div class="project-card__number">12 — EXTENDED REALITY</div>
                                 <h3 class="project-card__title">Tower of Hanoi — XR Game</h3>
-                                <p class="project-card__desc">Immersive puzzle game with WebXR VR/AR support, 3D manipulation, and hint system.</p>
+                                <p class="project-card__desc">Immersive puzzle game with WebXR VR/AR support, 3D manipulation, hint system, and live playable web demo.</p>
                                 <div class="project-card__tags">
                                     <span class="tag tag--accent">Three.js</span>
                                     <span class="tag tag--cyan">WebXR</span>
@@ -508,18 +555,19 @@
                                     <path d="M185 95 L195 100 L185 105" stroke="#f5d547" stroke-width="0.8" fill="none" opacity="0.5"/>
                                     <rect x="200" y="70" width="120" height="60" rx="4" fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0.4"/>
                                     <text x="215" y="95" fill="#22c55e" font-size="7" font-family="monospace" opacity="0.6">Match: 94.2%</text>
-                                    <text x="215" y="115" fill="#f5d547" font-size="6" font-family="monospace" opacity="0.4">Skills: 8/10</text>
+                                    <text x="215" y="115" fill="#f5d547" font-size="6" font-family="monospace" opacity="0.4">CI: 42/42 PASS</text>
                                     <text x="130" y="175" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">resume → job matching</text>
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">12 — AI ENGINEERING</div>
+                                <div class="project-card__number">13 — AI ENGINEERING</div>
                                 <h3 class="project-card__title">Azure OCR Job Matcher</h3>
-                                <p class="project-card__desc">Automated candidate-to-job matching using Azure AI Document Intelligence and LLMs for semantic resume analysis.</p>
+                                <p class="project-card__desc">Production-style OCR &amp; candidate-to-job matching backend using Azure Document Intelligence, FastAPI, field confidence scoring, and 42/42 passing CI tests.</p>
                                 <div class="project-card__tags">
                                     <span class="tag tag--accent">Azure AI</span>
-                                    <span class="tag tag--cyan">OCR</span>
-                                    <span class="tag">LLMs</span>
+                                    <span class="tag tag--cyan">FastAPI</span>
+                                    <span class="tag">Document Intelligence</span>
+                                    <span class="tag">42/42 Tests</span>
                                 </div>
                             </div>
                         </div>

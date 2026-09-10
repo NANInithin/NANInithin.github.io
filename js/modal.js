@@ -63,9 +63,13 @@ export class Modal {
                 <h3 class="modal__subtitle">Tech Stack</h3>
                 <div class="modal__tags">${data.tags.map(t => `<span class="tag tag--accent">${t}</span>`).join('')}</div>
             </div>
-            ${data.github || data.huggingface ? `
+            ${data.github || data.huggingface || data.demo ? `
             <div class="modal__actions">
-                ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn btn--primary">
+                ${data.demo ? `<a href="${data.demo}" target="_blank" rel="noopener" class="btn btn--primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+                    Live Demo
+                </a>` : ''}
+                ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn ${data.demo ? 'btn--outline' : 'btn--primary'}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     View Repository
                 </a>` : ''}
@@ -141,8 +145,21 @@ export class Modal {
                 tags: ['YOLOv4', 'Jetson Nano', 'Jetson Xavier', 'Transfer Learning', 'Edge AI', 'TensorRT'],
                 github: null
             },
+            'image-processing': {
+                number: '04 — IMAGE PROCESSING',
+                title: 'Image Processing Experiments',
+                description: 'Collection of image processing techniques and experiments implemented in Jupyter Notebooks. Covers classical computer vision algorithms, filters, transformations, and analysis methods.',
+                highlights: [
+                    'Classical image processing algorithms',
+                    'Filter and transformation operations',
+                    'Jupyter Notebook based experiments',
+                    'Foundation for computer vision workflows'
+                ],
+                tags: ['OpenCV', 'Python', 'Jupyter', 'Image Processing', 'Computer Vision'],
+                github: 'https://github.com/NANInithin/NANIimage-processing'
+            },
             'gan': {
-                number: '04 — GENERATIVE AI',
+                number: '06 — GENERATIVE AI',
                 title: 'Synthetic Data Generation — VAE vs GAN',
                 description: 'Comparative study of Variational Autoencoders and Generative Adversarial Networks for synthetic data generation. Trained models to augment training datasets, improving downstream classifier performance.',
                 highlights: [
@@ -155,16 +172,25 @@ export class Modal {
                 github: 'https://github.com/NANInithin/Generative-Models-VAE-vs-GAN'
             },
             'arithmetic-llm': {
-                number: '05 — LLM RESEARCH',
-                title: 'Arithmetic LLM — Supervised Pretraining vs RL Fine-Tuning',
-                description: 'Investigating whether small language models can learn arithmetic through supervised pretraining versus reinforcement learning fine-tuning. Explores the effectiveness of different training paradigms for mathematical reasoning.',
+                number: '07 — LLM RESEARCH',
+                title: 'Arithmetic LLM — Supervised Pretraining vs RL Fine-Tuning (v4)',
+                badge: 'v4 Scratchpad CoT',
+                description: 'A ~310M parameter decoder-only Transformer evaluating supervised pretraining against reinforcement learning fine-tuning for multi-digit arithmetic (+, -, ×) with up to 5-digit operands. Implements scratchpad Chain-of-Thought (CoT) and trained on Modal cloud A100-40GB / H100 GPUs across a 7-phase curriculum.',
                 highlights: [
-                    'Custom arithmetic dataset generation pipeline',
-                    'Supervised pretraining on arithmetic operations',
-                    'RL-based fine-tuning for improved reasoning',
-                    'Comparative analysis of training paradigms'
+                    'Scratchpad Chain-of-Thought decoding resolving train/inference distribution mismatch',
+                    'Achieved 95.00% overall accuracy across 5-digit addition, subtraction, and multiplication',
+                    'Perfect 100% accuracy on 1–4 digit operands and 99.30% on 5-digit problems',
+                    '100% accuracy on subtraction, 95.8% on addition, and 89.9% on multiplication',
+                    'Supervised pretraining (20 epochs, 300k samples) + RL fine-tuning (15k episodes)',
+                    'Modal cloud GPU pipeline with automated volume checkpoints and MLflow tracking'
                 ],
-                tags: ['Transformers', 'RL', 'PyTorch', 'NLP', 'Mathematical Reasoning'],
+                metrics: [
+                    { value: '95.00%', label: '5-Digit Accuracy', color: '#22c55e' },
+                    { value: '100%', label: '1–4 Digit Accuracy', color: 'var(--accent-active)' },
+                    { value: '~310M', label: 'Decoder-Only Params', color: 'var(--accent-cyan)' },
+                    { value: 'A100/H100', label: 'Modal Cloud GPU', color: '#f5d547' }
+                ],
+                tags: ['Transformers', 'Chain-of-Thought', 'Modal Cloud', 'PyTorch', 'MLflow', 'Reinforcement Learning', 'NLP'],
                 github: 'https://github.com/NANInithin/Arithmetic-LLM-supervised-pretraining-vs-RL-finetuning'
             },
             'continual-learning': {
@@ -193,34 +219,31 @@ export class Modal {
                 tags: ['DQN', 'Reinforcement Learning', 'PyTorch', 'OpenAI Gym', 'Deep Learning'],
                 github: 'https://github.com/NANInithin/deep-q-learning-cartpole-v1'
             },
-            'hanoi-xr': {
-                number: '09 — EXTENDED REALITY',
-                title: 'Tower of Hanoi — Extended Reality Game',
-                description: 'An immersive Tower of Hanoi puzzle game built with WebXR, supporting both VR and AR modes. Features 3D disk manipulation, move counting, hint system, and cross-platform browser compatibility.',
+            'agent-quantix': {
+                number: '09 — AI AGENT / QUANTIZATION',
+                title: 'AgentQuantix — Autonomous LLM Quantization Agent',
+                badge: 'New Project',
+                description: 'Autonomous CLI and MCP agent that scans trending Hugging Face models, computes local hardware feasibility (RAM, VRAM, peak disk, transfer and compute time), quantizes models to llama.cpp GGUF with imatrix calibration, validates loadability before publish, and uploads to Hugging Face with auto-generated model cards under two human-in-the-loop approval gates.',
                 highlights: [
-                    'WebXR-based VR and AR support',
-                    '3D interactive disk manipulation',
-                    'Hint system with optimal move suggestions',
-                    'Leaderboard and move counter'
+                    'Two strict human gates: user initiates research, user approves candidate models',
+                    'Deterministic Hugging Face Hub REST API trending scraper filtering text base models',
+                    'Hardware resource calculator: predicts peak disk, VRAM, RAM, and duration before committing',
+                    'Overlapped quantization and upload queue: minimizes peak disk via immediate local purge after Hub upload',
+                    'Full 29-type GGUF sweep with imatrix calibration on wikitext-2',
+                    'Automatic loadability verification before publishing: refuses broken GGUFs and verifies real file sizes',
+                    'Dual interface: standalone CLI and lightweight zero-dependency MCP server for AI harnesses (Claude Code, OpenRouter, Codex)'
                 ],
-                tags: ['Three.js', 'WebXR', 'JavaScript', 'VR', 'AR', '3D Graphics'],
-                github: 'https://github.com/NANInithin/Hanoi_Tower_Extended-Reality'
-            },
-            'image-processing': {
-                number: '04 — IMAGE PROCESSING',
-                title: 'Image Processing Experiments',
-                description: 'Collection of image processing techniques and experiments implemented in Jupyter Notebooks. Covers classical computer vision algorithms, filters, transformations, and analysis methods.',
-                highlights: [
-                    'Classical image processing algorithms',
-                    'Filter and transformation operations',
-                    'Jupyter Notebook based experiments',
-                    'Foundation for computer vision workflows'
+                metrics: [
+                    { value: '29 Types', label: 'GGUF Quant Sweep', color: 'var(--accent-active)' },
+                    { value: '2 Gates', label: 'Human-in-the-Loop', color: '#22c55e' },
+                    { value: '100+', label: 'Trending Models Scanned', color: 'var(--accent-cyan)' },
+                    { value: 'CLI + MCP', label: 'Agent Protocol', color: '#f5d547' }
                 ],
-                tags: ['OpenCV', 'Python', 'Jupyter', 'Image Processing', 'Computer Vision'],
-                github: 'https://github.com/NANInithin/NANIimage-processing'
+                tags: ['AI Agents', 'llama.cpp', 'GGUF', 'Quantization', 'HuggingFace', 'MCP', 'Python', 'uv'],
+                github: 'https://github.com/NANInithin/AgentQuantix'
             },
             'cityquest-ai': {
-                number: '09 — AI AGENT',
+                number: '10 — AI AGENT',
                 title: 'CityQuest AI',
                 description: 'A location-based game application that generates interactive games (scavenger hunts, hide-and-seek, tag) using AI. Uses a custom LoRA fine-tuned NVIDIA Nemotron-3-Nano-4B model to dynamically produce game content in structured JSON format based on real-world locations.',
                 highlights: [
@@ -240,30 +263,60 @@ export class Modal {
                 huggingface: 'https://huggingface.co/NANI-Nithin/CityQuest-Nemotron-3-Nano-4B-GGUF'
             },
             'agent-voca': {
-                number: '10 — VOICE AI',
-                title: 'AgentVoca',
-                description: 'Voice-powered AI agent platform enabling natural language interaction for task automation and intelligent assistance. Combines speech processing with large language model capabilities.',
+                number: '11 — VOICE DICTATION & OBSERVER',
+                title: 'AgentVoca — Model-Agnostic Voice Dictation Desktop App',
+                badge: 'v0.4.0 Observer',
+                description: 'A developer-first, model-agnostic voice dictation desktop app for macOS and Windows. Allows pairing any ASR provider (faster-whisper, local or remote) with any cleanup/LLM provider, inserting clean formatted text directly at the active cursor. Includes v0.4.0 Observer mode for multimodal session recording.',
                 highlights: [
-                    'Voice-driven AI agent interaction',
-                    'Natural language task automation',
-                    'Intelligent multi-modal assistance',
-                    'End-to-end voice-to-action pipeline'
+                    'Model-agnostic architecture: swap ASR (Whisper) or LLM cleanup providers with single-line config',
+                    'Local-first & offline mode: runs fully local via faster-whisper without data leaving the machine',
+                    'Observer mode (v0.4.0): records mic + screen keyframes + selections into formatted markdown & JSON sidecar',
+                    'Built-in RapidOCR (ONNX) via onnxruntime for zero-config offline visual text extraction',
+                    'Technical text preservation: protects code identifiers, URLs, file paths, and CLI flags from LLM alteration',
+                    'Real-time streaming transcription, voice commands ("new paragraph", "scratch that"), and screenshot-to-text'
                 ],
-                tags: ['AI Agents', 'Voice AI', 'LLMs', 'Python', 'NLP'],
+                metrics: [
+                    { value: 'Local-First', label: 'Zero-Cloud Mode', color: '#22c55e' },
+                    { value: 'v0.4.0', label: 'Observer Session Mode', color: 'var(--accent-active)' },
+                    { value: '100%', label: 'Code & Syntax Safe', color: 'var(--accent-cyan)' }
+                ],
+                tags: ['Voice AI', 'faster-whisper', 'LLMs', 'RapidOCR', 'ONNX', 'Python', 'Desktop App'],
                 github: 'https://github.com/NANInithin/AgentVoca'
             },
-            'azure-ocr': {
-                number: '12 — AI ENGINEERING',
-                title: 'Azure OCR Job Matcher',
-                description: 'Automated candidate-to-job matching platform powered by Azure AI Document Intelligence and Large Language Models. Extracts structured candidate profiles from unstructured resumes (PDFs, images) and evaluates semantic fit against job postings with explainable match scores.',
+            'hanoi-xr': {
+                number: '12 — EXTENDED REALITY',
+                title: 'Tower of Hanoi — Extended Reality Game',
+                description: 'An immersive Tower of Hanoi puzzle game built with WebXR, supporting both VR and AR modes. Features 3D disk manipulation, move counting, hint system, and cross-platform browser compatibility.',
                 highlights: [
-                    'Azure AI Document Intelligence for OCR text and layout extraction',
-                    'Semantic job matching using vector embeddings and LLM-based scoring',
-                    'Automatic skill, education, and certification extraction into structured JSON',
-                    'Skill gap analysis between candidate profiles and job descriptions',
-                    'Batch processing pipeline with interactive UI for candidate ranking'
+                    'WebXR-based VR and AR support',
+                    '3D interactive disk manipulation',
+                    'Hint system with optimal move suggestions',
+                    'Leaderboard and move counter',
+                    'Cross-platform desktop & immersive headset support'
                 ],
-                tags: ['Azure AI', 'OCR', 'LLMs', 'Python', 'NLP', 'Vector Embeddings', 'FastAPI'],
+                tags: ['Three.js', 'WebXR', 'JavaScript', 'VR', 'AR', '3D Graphics'],
+                github: 'https://github.com/NANInithin/Hanoi_Tower_Extended-Reality',
+                demo: 'https://NANInithin.github.io/Hanoi_Tower_Extended-Reality/'
+            },
+            'azure-ocr': {
+                number: '13 — AI ENGINEERING',
+                title: 'Azure OCR Job Matcher',
+                badge: '42/42 Tests Passing',
+                description: 'Production-grade candidate-to-job matching backend powered by Azure AI Document Intelligence and Large Language Models. Ingests unstructured candidate resumes (PDFs, images), extracts structured candidate profiles with field-level confidence scoring, and matches against parsed job descriptions with transparent decision evidence.',
+                highlights: [
+                    'Azure AI Document Intelligence OCR for text and layout extraction',
+                    'Deterministic parsing rules with attached field-level confidence scores',
+                    'Semantic job matching using vector embeddings and LLM-based scoring',
+                    '42/42 unit and route-level evaluation tests passing in CI harness',
+                    'Persisted artifact registry and saved match retrieval endpoints (FastAPI)',
+                    'Skill gap analysis and explainable decision notes for recruiters'
+                ],
+                metrics: [
+                    { value: '42/42', label: 'CI Tests Passing', color: '#22c55e' },
+                    { value: '100%', label: 'Field Confidence Scoring', color: 'var(--accent-cyan)' },
+                    { value: 'FastAPI', label: 'Modular Architecture', color: 'var(--accent-active)' }
+                ],
+                tags: ['Azure AI', 'OCR', 'FastAPI', 'LLMs', 'Python', 'Document Intelligence', 'CI/CD'],
                 github: 'https://github.com/NANInithin/azure-ocr-job-matcher'
             }
         };
