@@ -366,32 +366,6 @@ export class Modal {
                 ],
                 tags: ['Azure AI', 'OCR', 'FastAPI', 'LLMs', 'Python', 'Document Intelligence', 'CI/CD'],
                 github: 'https://github.com/NANInithin/azure-ocr-job-matcher'
-            },
-            'embedded-systems': {
-                number: '16 — EMBEDDED SYSTEMS',
-                title: 'Embedded Systems Programming — ARM7 LPC2148',
-                description: 'A collection of bare-metal embedded programs written in C and ARM assembly for the NXP LPC2148 (ARM7TDMI) microcontroller, working directly with peripheral registers.',
-                highlights: [
-                    'ARM assembly programs for register-level arithmetic and memory operations',
-                    'Embedded C for GPIO, timers and interrupts on the LPC2148',
-                    'Hardware PWM generation via direct PWM register configuration',
-                    'Progressive lab series building from assembly fundamentals to peripherals'
-                ],
-                tags: ['Embedded C', 'ARM Assembly', 'LPC2148', 'ARM7', 'Microcontrollers'],
-                github: 'https://github.com/NANInithin/NANI_embedded-systems'
-            },
-            'arduino-iot': {
-                number: '17 — IOT / MICROCONTROLLERS',
-                title: 'Arduino & ESP32 IoT Projects',
-                description: 'Hardware prototypes built with Arduino and ESP32, combining sensors, actuators and GSM connectivity for home automation and safety alerts.',
-                highlights: [
-                    'GSM-based home automation controlled over SMS',
-                    'Flame sensor with SIM900 GSM SMS alerts and buzzer alarm',
-                    'Stepper motor control with ESP32',
-                    'Built with the Arduino IDE'
-                ],
-                tags: ['Arduino', 'ESP32', 'GSM / SIM900', 'IoT', 'C++', 'Sensors'],
-                github: 'https://github.com/NANInithin/NANIarduino'
             }
         };
         return projects[id];
