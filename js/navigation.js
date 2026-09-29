@@ -130,7 +130,7 @@ export class Navigation {
 
         this.productsToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            setOpen(!this.productsDropdown.classList.contains('open'));
+            setOpen(canHover.matches || !this.productsDropdown.classList.contains('open'));
         });
 
         this.productsDropdown.addEventListener('mouseenter', () => {
