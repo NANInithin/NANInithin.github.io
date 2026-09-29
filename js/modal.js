@@ -63,13 +63,17 @@ export class Modal {
                 <h3 class="modal__subtitle">Tech Stack</h3>
                 <div class="modal__tags">${data.tags.map(t => `<span class="tag tag--accent">${t}</span>`).join('')}</div>
             </div>
-            ${data.github || data.huggingface || data.demo ? `
+            ${data.github || data.huggingface || data.demo || data.website ? `
             <div class="modal__actions">
+                ${data.website ? `<a href="${data.website}" target="_blank" rel="noopener" class="btn btn--primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Visit Website
+                </a>` : ''}
                 ${data.demo ? `<a href="${data.demo}" target="_blank" rel="noopener" class="btn btn--primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
                     Live Demo
                 </a>` : ''}
-                ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn ${data.demo ? 'btn--outline' : 'btn--primary'}">
+                ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener" class="btn ${data.demo || data.website ? 'btn--outline' : 'btn--primary'}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     View Repository
                 </a>` : ''}
@@ -219,8 +223,51 @@ export class Modal {
                 tags: ['DQN', 'Reinforcement Learning', 'PyTorch', 'OpenAI Gym', 'Deep Learning'],
                 github: 'https://github.com/NANInithin/deep-q-learning-cartpole-v1'
             },
+            'hf-quants': {
+                number: '09 — OPEN-SOURCE CONTRIBUTIONS',
+                title: 'Open-Source GGUF Quantizations on Hugging Face',
+                badge: 'Open Source',
+                description: 'An ongoing open-source contribution to the local-inference community: newly released and trending models converted into llama.cpp GGUF quantizations and published on Hugging Face with model cards, so they run on consumer hardware. Coverage spans compact 0.35B models up to a 36B-A4B mixture-of-experts, including text, vision-language, code and text-to-speech models. Many quants are produced with my AgentQuantix pipeline.',
+                highlights: [
+                    'K2-Horizon-MoVA-36B-A4B-GGUF — 48K+ downloads',
+                    'K2-Horizon-7B-GGUF — 25K+ downloads',
+                    'Muse-Glimmer-30B-GGUF — 25K+ downloads',
+                    'Ling-3.0-tiny-GGUF — 16K+ downloads',
+                    'K2-Horizon-3.7B-GGUF & MiniCPM5-2B-GGUF — 15K+ downloads each',
+                    'Also: Nemotron-3.5-Lightning-30B-A3B, Instella-MoE-16B-A3B-Think, Granite 4.2, LFM2.5-VL, SenseNova-U1.5, Qwen3-TTS, VoxCPM2 and more'
+                ],
+                metrics: [
+                    { value: '210K+', label: 'Total Downloads', color: '#22c55e' },
+                    { value: '29', label: 'GGUF Model Repos', color: 'var(--accent-active)' },
+                    { value: '0.35B–36B', label: 'Model Size Range', color: 'var(--accent-cyan)' },
+                    { value: '120+', label: 'Community Likes', color: '#f5d547' }
+                ],
+                tags: ['Open Source', 'llama.cpp', 'GGUF', 'Quantization', 'HuggingFace', 'MoE', 'Local Inference'],
+                huggingface: 'https://huggingface.co/NANI-Nithin'
+            },
+            'agent-keireki': {
+                number: '10 — AI PRODUCT',
+                title: 'Agent Keireki — Tailored Applications, Delivered',
+                badge: 'Live Product',
+                description: 'A production job-application assistant with a deliberately short Telegram flow: link once, send a job URL, pasted description or screenshot, receive a fit verdict, then generate a resume, cover letter, email, or all three — grounded only in the candidate\'s own experience. The web app provides the wallet, job history, artifact downloads and asynchronous job research across public job boards.',
+                highlights: [
+                    'Telegram bot + FastAPI web app + owner-only admin console + background research worker',
+                    'Candidate-fit scoring before any document is generated',
+                    'Rules-driven resume engine with automated evaluation and repair loop',
+                    'Internal source-backed candidate profile that users can review or reject fact-by-fact',
+                    'Universal job-link fetching with direct ATS adapters as fallback',
+                    'Stripe-backed EUR wallet with an atomic ledger; isolated staging and production behind Caddy'
+                ],
+                metrics: [
+                    { value: '1 Link', label: 'In → Full Application Out', color: 'var(--accent-active)' },
+                    { value: '3', label: 'Artifacts: Resume · Letter · Email', color: '#22c55e' },
+                    { value: 'Live', label: 'agentkeireki.com', color: 'var(--accent-cyan)' }
+                ],
+                tags: ['AI Agents', 'LLMs', 'FastAPI', 'Telegram Bot', 'PostgreSQL', 'SQLAlchemy', 'Stripe', 'ReportLab', 'Docker', 'Caddy'],
+                website: 'https://agentkeireki.com/'
+            },
             'agent-quantix': {
-                number: '09 — AI AGENT / QUANTIZATION',
+                number: '11 — AI AGENT / QUANTIZATION',
                 title: 'AgentQuantix — Autonomous LLM Quantization Agent',
                 badge: 'New Project',
                 description: 'Autonomous CLI and MCP agent that scans trending Hugging Face models, computes local hardware feasibility (RAM, VRAM, peak disk, transfer and compute time), quantizes models to llama.cpp GGUF with imatrix calibration, validates loadability before publish, and uploads to Hugging Face with auto-generated model cards under two human-in-the-loop approval gates.',
@@ -243,7 +290,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/AgentQuantix'
             },
             'cityquest-ai': {
-                number: '10 — AI AGENT',
+                number: '12 — AI AGENT',
                 title: 'CityQuest AI',
                 description: 'A location-based game application that generates interactive games (scavenger hunts, hide-and-seek, tag) using AI. Uses a custom LoRA fine-tuned NVIDIA Nemotron-3-Nano-4B model to dynamically produce game content in structured JSON format based on real-world locations.',
                 highlights: [
@@ -259,11 +306,12 @@ export class Modal {
                     { value: 'Q4_K_M', label: 'Quantization', color: '#22c55e' }
                 ],
                 tags: ['Nemotron', 'LoRA', 'Unsloth', 'llama.cpp', 'GGUF', 'Python', 'HuggingFace'],
+                website: 'https://huggingface.co/spaces/build-small-hackathon/CityQuest-AI',
                 github: 'https://github.com/NANInithin/CityQuest-AI',
                 huggingface: 'https://huggingface.co/NANI-Nithin/CityQuest-Nemotron-3-Nano-4B-GGUF'
             },
             'agent-voca': {
-                number: '11 — VOICE DICTATION & OBSERVER',
+                number: '13 — VOICE DICTATION & OBSERVER',
                 title: 'AgentVoca — Model-Agnostic Voice Dictation Desktop App',
                 badge: 'v0.4.0 Observer',
                 description: 'A developer-first, model-agnostic voice dictation desktop app for macOS and Windows. Allows pairing any ASR provider (faster-whisper, local or remote) with any cleanup/LLM provider, inserting clean formatted text directly at the active cursor. Includes v0.4.0 Observer mode for multimodal session recording.',
@@ -284,7 +332,7 @@ export class Modal {
                 github: 'https://github.com/NANInithin/AgentVoca'
             },
             'hanoi-xr': {
-                number: '12 — EXTENDED REALITY',
+                number: '14 — EXTENDED REALITY',
                 title: 'Tower of Hanoi — Extended Reality Game',
                 description: 'An immersive Tower of Hanoi puzzle game built with WebXR, supporting both VR and AR modes. Features 3D disk manipulation, move counting, hint system, and cross-platform browser compatibility.',
                 highlights: [
@@ -299,7 +347,7 @@ export class Modal {
                 demo: 'https://NANInithin.github.io/Hanoi_Tower_Extended-Reality/'
             },
             'azure-ocr': {
-                number: '13 — AI ENGINEERING',
+                number: '15 — AI ENGINEERING',
                 title: 'Azure OCR Job Matcher',
                 badge: '42/42 Tests Passing',
                 description: 'Production-grade candidate-to-job matching backend powered by Azure AI Document Intelligence and Large Language Models. Ingests unstructured candidate resumes (PDFs, images), extracts structured candidate profiles with field-level confidence scoring, and matches against parsed job descriptions with transparent decision evidence.',

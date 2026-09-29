@@ -148,6 +148,122 @@
     display: none;
 }
 
+/* Products dropdown */
+.site-header__dropdown {
+    position: relative;
+}
+
+.site-header__products-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all var(--transition-fast);
+}
+
+.site-header__products-toggle:hover,
+.site-header__dropdown.open .site-header__products-toggle {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.site-header__caret {
+    font-size: 0.65rem;
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+.site-header__dropdown.open .site-header__caret {
+    transform: rotate(180deg);
+    color: var(--accent-active);
+}
+
+.site-header__dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.4rem;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow-active);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s linear 0.2s;
+    z-index: 210;
+}
+
+.site-header__dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+.site-header__dropdown.open .site-header__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s;
+}
+
+.site-header__dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.site-header__dropdown-item:hover,
+.site-header__dropdown-item:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--accent-active);
+}
+
+.site-header__dropdown-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.site-header__dropdown-item:hover .site-header__dropdown-title {
+    color: var(--accent-active);
+}
+
+.site-header__dropdown-title::after {
+    content: ' \2197';
+    font-weight: 400;
+    color: var(--text-dim);
+}
+
+.site-header__dropdown-desc {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
 /* Hamburger — mobile only */
 .site-header__hamburger {
     display: none;
@@ -214,7 +330,7 @@
     }
 
     .site-header__nav.nav--open {
-        max-height: 300px;
+        max-height: 600px;
         opacity: 1;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
@@ -229,6 +345,40 @@
     .site-header__link--cta {
         margin-left: 0;
         margin-top: 0.25rem;
+    }
+
+    .site-header__dropdown {
+        width: 100%;
+    }
+
+    .site-header__products-toggle {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+    }
+
+    .site-header__dropdown-menu {
+        position: static;
+        min-width: 0;
+        max-height: 0;
+        padding: 0 0.4rem;
+        overflow: hidden;
+        box-shadow: none;
+        transform: none;
+        border-color: transparent;
+        transition: max-height 0.3s var(--ease-out-expo), opacity 0.2s ease, padding 0.3s ease;
+    }
+
+    .site-header__dropdown.open .site-header__dropdown-menu {
+        max-height: 300px;
+        padding: 0.4rem;
+        border-color: var(--border-light);
+        transform: none;
+    }
+
+    .site-header__dropdown-item {
+        text-align: center;
+        align-items: center;
     }
 
     .site-header__hamburger {

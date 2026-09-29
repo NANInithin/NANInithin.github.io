@@ -19,6 +19,8 @@ export class Navigation {
         this.headerLinks = document.querySelectorAll('.site-header__link');
         this.hamburger = document.getElementById('header-hamburger');
         this.headerNav = document.getElementById('header-nav');
+        this.productsDropdown = document.getElementById('products-dropdown');
+        this.productsToggle = document.getElementById('products-toggle');
 
         this.initObserver();
         this.initNavClicks();
@@ -26,6 +28,7 @@ export class Navigation {
         this.initMetricCounters();
         this.initHeaderScroll();
         this.initHamburger();
+        this.initProductsDropdown();
     }
 
     initObserver() {
@@ -113,6 +116,47 @@ export class Navigation {
                 this.hamburger.classList.remove('open');
                 this.headerNav.classList.remove('nav--open');
             });
+        });
+    }
+
+    initProductsDropdown() {
+        if (!this.productsDropdown || !this.productsToggle) return;
+
+        const setOpen = (open) => {
+            this.productsDropdown.classList.toggle('open', open);
+            this.productsToggle.setAttribute('aria-expanded', String(open));
+        };
+        const canHover = window.matchMedia('(hover: hover) and (min-width: 769px)');
+
+        this.productsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setOpen(canHover.matches || !this.productsDropdown.classList.contains('open'));
+        });
+
+        this.productsDropdown.addEventListener('mouseenter', () => {
+            if (canHover.matches) setOpen(true);
+        });
+        this.productsDropdown.addEventListener('mouseleave', () => {
+            if (canHover.matches) setOpen(false);
+        });
+
+        this.productsDropdown.querySelectorAll('.site-header__dropdown-item').forEach((item) => {
+            item.addEventListener('click', () => {
+                setOpen(false);
+                this.hamburger?.classList.remove('open');
+                this.headerNav?.classList.remove('nav--open');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!this.productsDropdown.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.productsDropdown.classList.contains('open')) {
+                setOpen(false);
+                this.productsToggle.focus();
+            }
         });
     }
 
