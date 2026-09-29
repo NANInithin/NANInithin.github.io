@@ -35,6 +35,25 @@
                 <span class="site-header__name">Nithin Sai Kumar <span class="site-header__name--dim">Kopparapu</span></span>
             </a>
             <nav class="site-header__nav" id="header-nav">
+                <div class="site-header__dropdown" id="products-dropdown">
+                    <button type="button" class="site-header__products-toggle" id="products-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="products-menu">
+                        Products <span class="site-header__caret" aria-hidden="true">&#9662;</span>
+                    </button>
+                    <div class="site-header__dropdown-menu" id="products-menu" role="menu" aria-labelledby="products-toggle">
+                        <a href="https://agentkeireki.com/" target="_blank" rel="noopener" class="site-header__dropdown-item" role="menuitem" id="product-agentkeireki">
+                            <span class="site-header__dropdown-title">Agent Keireki</span>
+                            <span class="site-header__dropdown-desc">Tailored job applications, delivered</span>
+                        </a>
+                        <a href="https://huggingface.co/spaces/build-small-hackathon/CityQuest-AI" target="_blank" rel="noopener" class="site-header__dropdown-item" role="menuitem" id="product-cityquest">
+                            <span class="site-header__dropdown-title">CityQuest AI</span>
+                            <span class="site-header__dropdown-desc">AI-generated city scavenger hunts</span>
+                        </a>
+                        <a href="https://huggingface.co/NANI-Nithin" target="_blank" rel="noopener" class="site-header__dropdown-item" role="menuitem" id="product-hf-quants">
+                            <span class="site-header__dropdown-title">Hugging Face Quants</span>
+                            <span class="site-header__dropdown-desc">Open-source GGUF models for llama.cpp</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="#portfolio" class="site-header__link" data-section="portfolio">Projects</a>
                 <a href="#experience" class="site-header__link" data-section="experience">Experience &amp; Education</a>
                 <a href="#console" class="site-header__link" data-section="console">Skills</a>
@@ -397,6 +416,41 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Open-Source Hugging Face Quantizations -->
+                        <div class="project-card project-card--featured" data-project="hf-quants" id="project-hf-quants">
+                            <div class="project-card__featured-badge"><span class="tag tag--cyan">★ Open Source</span></div>
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#1a140a,#0a131f);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="60" y="36" fill="#f5d547" font-size="9" font-family="monospace" opacity="0.7">huggingface.co/NANI-Nithin</text>
+                                    <!-- Download bars (top quantized repos) -->
+                                    <line x1="60" y1="160" x2="340" y2="160" stroke="#8a8a9a" stroke-width="0.8" opacity="0.3"/>
+                                    <rect x="70" y="60" width="28" height="100" rx="3" fill="#f5d547" opacity="0.45"/>
+                                    <rect x="115" y="107" width="28" height="53" rx="3" fill="#22d3ee" opacity="0.4"/>
+                                    <rect x="160" y="108" width="28" height="52" rx="3" fill="#a855f7" opacity="0.4"/>
+                                    <rect x="205" y="126" width="28" height="34" rx="3" fill="#22c55e" opacity="0.4"/>
+                                    <rect x="250" y="127" width="28" height="33" rx="3" fill="#22d3ee" opacity="0.35"/>
+                                    <rect x="295" y="127" width="28" height="33" rx="3" fill="#a855f7" opacity="0.35"/>
+                                    <text x="66" y="54" fill="#f5d547" font-size="6.5" font-family="monospace" opacity="0.7">48K</text>
+                                    <text x="112" y="101" fill="#22d3ee" font-size="6.5" font-family="monospace" opacity="0.6">26K</text>
+                                    <text x="157" y="102" fill="#a855f7" font-size="6.5" font-family="monospace" opacity="0.6">25K</text>
+                                    <text x="250" y="60" fill="#22c55e" font-size="8" font-family="monospace" opacity="0.6">210K+ downloads</text>
+                                    <text x="250" y="74" fill="#8a8a9a" font-size="6.5" font-family="monospace" opacity="0.6">29 GGUF repos</text>
+                                    <text x="120" y="180" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">open-source llama.cpp GGUF quants</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">09 — OPEN-SOURCE CONTRIBUTIONS</div>
+                                <h3 class="project-card__title">Open-Source GGUF Quantizations on Hugging Face</h3>
+                                <p class="project-card__desc">29 llama.cpp GGUF model repos (0.35B → 36B MoE, text, vision &amp; TTS) released on Hugging Face, with 210K+ downloads from the community.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Open Source</span>
+                                    <span class="tag tag--cyan">llama.cpp</span>
+                                    <span class="tag">GGUF</span>
+                                    <span class="tag">Quantization</span>
+                                    <span class="tag">HuggingFace</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -408,6 +462,44 @@
                         <span class="portfolio__category-line"></span>
                     </div>
                     <div class="portfolio__grid">
+                        <!-- Agent Keireki (Live Product) -->
+                        <div class="project-card project-card--featured" data-project="agent-keireki" id="project-agentkeireki">
+                            <div class="project-card__featured-badge"><span class="tag tag--accent">★ Live Product</span></div>
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a12,#0f1a0a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="60" y="36" fill="#22c55e" font-size="9" font-family="monospace" opacity="0.7">agentkeireki.com</text>
+                                    <!-- Job link in -->
+                                    <rect x="60" y="62" width="110" height="26" rx="5" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.5"/>
+                                    <text x="68" y="79" fill="#22d3ee" font-size="6.5" font-family="monospace" opacity="0.6">jobs.example/role</text>
+                                    <path d="M175 75 L215 75" stroke="#f5d547" stroke-width="0.8" stroke-dasharray="4 2" opacity="0.5"/>
+                                    <path d="M210 70 L220 75 L210 80" stroke="#f5d547" stroke-width="0.8" fill="none" opacity="0.5"/>
+                                    <!-- Fit verdict -->
+                                    <rect x="225" y="55" width="115" height="40" rx="5" fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0.5"/>
+                                    <text x="233" y="72" fill="#22c55e" font-size="7" font-family="monospace" opacity="0.7">Fit: Strong match</text>
+                                    <text x="233" y="86" fill="#8a8a9a" font-size="6" font-family="monospace" opacity="0.6">resume · cover · email</text>
+                                    <!-- Generated documents -->
+                                    <rect x="120" y="112" width="40" height="50" rx="3" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.45"/>
+                                    <rect x="180" y="112" width="40" height="50" rx="3" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.45"/>
+                                    <rect x="240" y="112" width="40" height="50" rx="3" fill="none" stroke="#22d3ee" stroke-width="0.8" opacity="0.45"/>
+                                    <text x="129" y="140" fill="#a855f7" font-size="6" font-family="monospace" opacity="0.6">CV</text>
+                                    <text x="186" y="140" fill="#f5d547" font-size="6" font-family="monospace" opacity="0.6">Letter</text>
+                                    <text x="247" y="140" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.6">Email</text>
+                                    <text x="110" y="182" fill="#22c55e" font-size="6" font-family="monospace" opacity="0.4">one link in, a complete application out</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">10 — AI PRODUCT</div>
+                                <h3 class="project-card__title">Agent Keireki — Tailored Job Applications</h3>
+                                <p class="project-card__desc">Live job-application assistant: send a job link, text or screenshot via Telegram, get a fit verdict and a grounded resume, cover letter &amp; email.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">AI Agents</span>
+                                    <span class="tag tag--cyan">FastAPI</span>
+                                    <span class="tag">Telegram Bot</span>
+                                    <span class="tag">PostgreSQL</span>
+                                    <span class="tag">Stripe</span>
+                                </div>
+                            </div>
+                        </div>
                         <!-- AgentQuantix (New Project) -->
                         <div class="project-card project-card--featured" data-project="agent-quantix" id="project-agentquantix">
                             <div class="project-card__featured-badge"><span class="tag tag--cyan">★ New Project</span></div>
@@ -438,7 +530,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">09 — AI AGENT / QUANTIZATION</div>
+                                <div class="project-card__number">11 — AI AGENT / QUANTIZATION</div>
                                 <h3 class="project-card__title">AgentQuantix — Autonomous Quantization Agent</h3>
                                 <p class="project-card__desc">Autonomous CLI &amp; MCP pipeline agent scanning trending Hugging Face models, calculating hardware feasibility, and generating verified GGUF quants via llama.cpp.</p>
                                 <div class="project-card__tags">
@@ -473,7 +565,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">10 — AI AGENT</div>
+                                <div class="project-card__number">12 — AI AGENT</div>
                                 <h3 class="project-card__title">CityQuest AI</h3>
                                 <p class="project-card__desc">AI-powered city exploration and quest generation platform leveraging intelligent agents for interactive urban discovery.</p>
                                 <div class="project-card__tags">
@@ -504,7 +596,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">11 — VOICE DICTATION &amp; OBSERVER</div>
+                                <div class="project-card__number">13 — VOICE DICTATION &amp; OBSERVER</div>
                                 <h3 class="project-card__title">AgentVoca — Model-Agnostic Voice Dictation</h3>
                                 <p class="project-card__desc">Developer-first voice dictation desktop app for macOS &amp; Windows with Observer multimodal recording, RapidOCR (ONNX), local Whisper, and cursor insertion.</p>
                                 <div class="project-card__tags">
@@ -531,7 +623,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">12 — EXTENDED REALITY</div>
+                                <div class="project-card__number">14 — EXTENDED REALITY</div>
                                 <h3 class="project-card__title">Tower of Hanoi — XR Game</h3>
                                 <p class="project-card__desc">Immersive puzzle game with WebXR VR/AR support, 3D manipulation, hint system, and live playable web demo.</p>
                                 <div class="project-card__tags">
@@ -560,7 +652,7 @@
                                 </svg>
                             </div>
                             <div class="project-card__body">
-                                <div class="project-card__number">13 — AI ENGINEERING</div>
+                                <div class="project-card__number">15 — AI ENGINEERING</div>
                                 <h3 class="project-card__title">Azure OCR Job Matcher</h3>
                                 <p class="project-card__desc">Production-style OCR &amp; candidate-to-job matching backend using Azure Document Intelligence, FastAPI, field confidence scoring, and 42/42 passing CI tests.</p>
                                 <div class="project-card__tags">
@@ -568,6 +660,72 @@
                                     <span class="tag tag--cyan">FastAPI</span>
                                     <span class="tag">Document Intelligence</span>
                                     <span class="tag">42/42 Tests</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Embedded Systems -->
+                        <div class="project-card" data-project="embedded-systems" id="project-embedded">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a0f1a,#1a1a0a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Microcontroller chip -->
+                                    <rect x="160" y="60" width="80" height="80" rx="4" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
+                                    <text x="172" y="97" fill="#22d3ee" font-size="8" font-family="monospace" opacity="0.7">LPC2148</text>
+                                    <text x="180" y="110" fill="#8a8a9a" font-size="6" font-family="monospace" opacity="0.6">ARM7</text>
+                                    <line x1="170" y1="60" x2="170" y2="48" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="190" y1="60" x2="190" y2="48" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="210" y1="60" x2="210" y2="48" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="230" y1="60" x2="230" y2="48" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="170" y1="140" x2="170" y2="152" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="190" y1="140" x2="190" y2="152" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="210" y1="140" x2="210" y2="152" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <line x1="230" y1="140" x2="230" y2="152" stroke="#22d3ee" stroke-width="0.8" opacity="0.4"/>
+                                    <text x="60" y="80" fill="#a855f7" font-size="6.5" font-family="monospace" opacity="0.6">LDR R1,VALUE1</text>
+                                    <text x="60" y="92" fill="#a855f7" font-size="6.5" font-family="monospace" opacity="0.6">ADD R3,R1,R2</text>
+                                    <text x="265" y="80" fill="#f5d547" font-size="6.5" font-family="monospace" opacity="0.6">PWMMR0 = ...</text>
+                                    <text x="265" y="92" fill="#f5d547" font-size="6.5" font-family="monospace" opacity="0.6">PWMTCR = 0x09</text>
+                                    <text x="130" y="180" fill="#22d3ee" font-size="6" font-family="monospace" opacity="0.4">bare-metal C &amp; ARM assembly</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">16 — EMBEDDED SYSTEMS</div>
+                                <h3 class="project-card__title">Embedded Systems — ARM7 LPC2148</h3>
+                                <p class="project-card__desc">Bare-metal C and ARM assembly programs for the LPC2148: GPIO, timers, PWM generation and register-level arithmetic.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Embedded C</span>
+                                    <span class="tag tag--cyan">ARM Assembly</span>
+                                    <span class="tag">LPC2148</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arduino IoT -->
+                        <div class="project-card" data-project="arduino-iot" id="project-arduino">
+                            <div class="project-card__visual" style="background:linear-gradient(135deg,#0a1a1a,#1a0a0a);">
+                                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- House -->
+                                    <path d="M90 110 L130 75 L170 110" stroke="#f5d547" stroke-width="1" fill="none" opacity="0.5"/>
+                                    <rect x="100" y="110" width="60" height="45" rx="2" fill="none" stroke="#f5d547" stroke-width="0.8" opacity="0.45"/>
+                                    <!-- Flame -->
+                                    <path d="M130 145 Q120 132 130 118 Q140 132 130 145" stroke="#ef4444" stroke-width="0.8" fill="none" opacity="0.6"/>
+                                    <!-- GSM signal -->
+                                    <path d="M195 95 Q210 80 225 95" stroke="#22d3ee" stroke-width="0.8" fill="none" opacity="0.5"/>
+                                    <path d="M188 88 Q210 65 232 88" stroke="#22d3ee" stroke-width="0.8" fill="none" opacity="0.35"/>
+                                    <circle cx="210" cy="100" r="2.5" fill="#22d3ee" opacity="0.5"/>
+                                    <!-- Phone -->
+                                    <rect x="265" y="70" width="36" height="66" rx="5" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                                    <text x="270" y="95" fill="#a855f7" font-size="6" font-family="monospace" opacity="0.7">SMS:</text>
+                                    <text x="270" y="106" fill="#ef4444" font-size="5.5" font-family="monospace" opacity="0.7">FIRE!</text>
+                                    <text x="110" y="182" fill="#22c55e" font-size="6" font-family="monospace" opacity="0.4">Arduino · ESP32 · SIM900 GSM</text>
+                                </svg>
+                            </div>
+                            <div class="project-card__body">
+                                <div class="project-card__number">17 — IOT / MICROCONTROLLERS</div>
+                                <h3 class="project-card__title">Arduino &amp; ESP32 IoT Projects</h3>
+                                <p class="project-card__desc">GSM-based home automation, a flame sensor with SIM900 SMS alerts and buzzer alarm, and ESP32 stepper-motor control.</p>
+                                <div class="project-card__tags">
+                                    <span class="tag tag--accent">Arduino</span>
+                                    <span class="tag tag--cyan">ESP32</span>
+                                    <span class="tag">GSM / SIM900</span>
+                                    <span class="tag">IoT</span>
                                 </div>
                             </div>
                         </div>
